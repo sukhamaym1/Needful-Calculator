@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="has-sticky-header">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="description" content="Needful Calculator Blog — Expert articles on personal finance, investment planning, tax savings, and financial calculators. Learn how to make smarter money decisions.">
+  <meta name="keywords" content="financial calculator blog, EMI tips, SIP guide, income tax, personal finance India">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://needfulcalculator.com/blog">
+  <title>Blog — Personal Finance & Calculator Guides | Needful Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .blog-page-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-10);
+      align-items: start;
+    }
+
+    .blog-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-8);
+    }
+
+    .blog-hero {
+      background: var(--gradient-hero);
+      padding-block: var(--space-12) var(--space-10);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .featured-post {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: var(--space-10);
+      transition: all var(--transition-base);
+    }
+
+    .featured-post:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .featured-post-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 300px;
+    }
+
+    .featured-post-body {
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-4);
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-top: var(--space-10);
+    }
+
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--txt-secondary);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .page-btn:hover, .page-btn.active {
+      background: var(--clr-primary);
+      border-color: var(--clr-primary);
+      color: white;
+    }
+
+    @media (max-width: 1024px) {
+      .blog-page-layout { grid-template-columns: 1fr; }
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-post-img { min-height: 220px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Needful Calculator Blog",
+    "url": "https://needfulcalculator.com/blog",
+    "description": "Expert articles on personal finance, investment planning, and tax saving.",
+    "publisher": { "@type": "Organization", "name": "Needful Calculator" }
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Needful Calculator Home">
+      <img src="assets/logos/logo.png" alt="Needful Calculator" width="36" height="36" loading="eager">
+      <span class="logo-text">Needful Calculator</span>
+    </a>
+    <div class="header-search" role="search">
+      <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search calculators..." aria-label="Search calculators" autocomplete="off" id="header-search-input">
+      <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="category.html" class="nav-link">Calculators</a>
+      <a href="blog.html" class="nav-link active">Blog</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-links">
+    <a href="index.html">🏠 Home</a>
+    <a href="category.html">🧮 All Calculators</a>
+    <a href="blog.html">📰 Blog</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- Blog Hero -->
+  <div class="blog-hero">
+    <div class="container text-center reveal">
+      <div class="section-eyebrow">📰 Our Blog</div>
+      <h1 class="section-title">Personal Finance &amp; Calculator Guides</h1>
+      <p class="section-subtitle">Expert-written articles to help you understand EMI, SIP, tax saving, and smart investing — in plain English.</p>
+    </div>
+  </div>
+
+  <div class="container section">
+
+    <!-- Ad Slot: Top -->
+    <div class="ad-slot ad-slot-leaderboard reveal" aria-label="Advertisement">
+      <span>Advertisement</span>
+    </div>
+
+    <div class="blog-page-layout">
+      <!-- Main Column -->
+      <div>
+        <!-- Category Filters -->
+        <div class="blog-filters reveal" role="group" aria-label="Filter articles by category">
+          <a href="#" class="tag active" id="filter-all">All</a>
+          <a href="#" class="tag" id="filter-finance">Finance</a>
+          <a href="#" class="tag" id="filter-investing">Investing</a>
+          <a href="#" class="tag" id="filter-tax">Tax</a>
+          <a href="#" class="tag" id="filter-health">Health</a>
+          <a href="#" class="tag" id="filter-howto">How To</a>
+        </div>
+
+        <!-- Featured Post -->
+        <a href="blog-post.html" class="featured-post reveal" id="featured-article" aria-label="Featured: How to Calculate Home Loan EMI">
+          <div style="overflow:hidden">
+            <img
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80"
+              alt="How to Calculate Home Loan EMI — Complete Guide"
+              class="featured-post-img"
+              loading="lazy"
+              width="800" height="533"
+            >
+          </div>
+          <div class="featured-post-body">
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap">
+              <span class="badge badge-primary">Finance</span>
+              <span class="badge badge-new">Featured</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);color:var(--txt-primary);line-height:1.3">How to Calculate Home Loan EMI: A Complete Guide for 2025</h2>
+            <p style="color:var(--txt-muted);font-size:var(--text-sm);line-height:1.7">Understanding your monthly EMI before taking a home loan can save you lakhs. Learn the exact formula, factors that affect your EMI, and tips to reduce your burden.</p>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-xs);color:var(--txt-muted)">
+              <span>📅 June 20, 2025</span>
+              <span>⏱️ 5 min read</span>
+              <span>👁️ 45K views</span>
+            </div>
+            <span class="read-more" style="margin-top:var(--space-2)">Read Full Article →</span>
+          </div>
+        </a>
+
+        <!-- Blog Grid -->
+        <div class="grid-2 reveal reveal-delay-1">
+
+          <article class="blog-card" id="blog-1">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="SIP vs FD" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-primary">Investing</span>
+                <span>June 15, 2025</span>
+                <span>7 min</span>
+              </div>
+              <h2 class="blog-card-title">SIP vs FD: Which Investment is Better for You in 2025?</h2>
+              <p class="blog-card-excerpt">A detailed comparison of SIP and Fixed Deposits — returns, risk, liquidity, and tax implications explained simply for Indian investors.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">Needful Team</span>
+                <a href="blog-post.html" class="read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" id="blog-2">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80" alt="New Tax Regime" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-trending">Tax</span>
+                <span>June 10, 2025</span>
+                <span>8 min</span>
+              </div>
+              <h2 class="blog-card-title">New Tax Regime vs Old: Which Should You Choose for FY 2024-25?</h2>
+              <p class="blog-card-excerpt">Budget 2025 changed income tax significantly. We break down which regime saves you more with real examples and our free calculator.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">Needful Team</span>
+                <a href="blog-post.html" class="read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" id="blog-3">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80" alt="PPF vs NPS" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-primary">Finance</span>
+                <span>June 5, 2025</span>
+                <span>6 min</span>
+              </div>
+              <h2 class="blog-card-title">PPF vs NPS: Which is Better for Long-Term Retirement Savings?</h2>
+              <p class="blog-card-excerpt">Compare Public Provident Fund and National Pension System on returns, tax benefits, lock-in period, and flexibility to choose the right one.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">Needful Team</span>
+                <a href="blog-post.html" class="read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" id="blog-4">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&q=80" alt="BMI Guide" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-accent">Health</span>
+                <span>May 28, 2025</span>
+                <span>4 min</span>
+              </div>
+              <h2 class="blog-card-title">What is BMI? How to Calculate and Interpret Your Body Mass Index</h2>
+              <p class="blog-card-excerpt">BMI is a simple screening tool. Learn what it measures, its limitations, and what your number means for your health and fitness goals.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">Needful Team</span>
+                <a href="blog-post.html" class="read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" id="blog-5">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=80" alt="Compound Interest" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-primary">Finance</span>
+                <span>May 20, 2025</span>
+                <span>5 min</span>
+              </div>
+              <h2 class="blog-card-title">The Power of Compound Interest: Why Starting Early Matters</h2>
+              <p class="blog-card-excerpt">Albert Einstein called it the eighth wonder of the world. See how ₹5,000/month invested at 25 can turn into ₹3.5 crore by retirement.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">Needful Team</span>
+                <a href="blog-post.html" class="read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" id="blog-6">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="GST Guide" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-trending">Tax</span>
+                <span>May 15, 2025</span>
+                <span>6 min</span>
+              </div>
+              <h2 class="blog-card-title">GST Calculator Guide: How to Calculate GST in India (2025)</h2>
+              <p class="blog-card-excerpt">Learn how GST works, the different slabs (5%, 12%, 18%, 28%), how to calculate inclusive and exclusive GST, and use our free GST calculator.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">Needful Team</span>
+                <a href="blog-post.html" class="read-more">Read More →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="pagination reveal" aria-label="Blog pagination">
+          <a href="#" class="page-btn active" aria-current="page" aria-label="Page 1">1</a>
+          <a href="#" class="page-btn" aria-label="Page 2">2</a>
+          <a href="#" class="page-btn" aria-label="Page 3">3</a>
+          <span style="color:var(--txt-muted);padding:0 var(--space-2)">…</span>
+          <a href="#" class="page-btn" aria-label="Page 10">10</a>
+          <a href="#" class="page-btn" aria-label="Next page" title="Next page">→</a>
+        </nav>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Blog sidebar">
+        <div class="ad-slot ad-slot-rectangle" aria-label="Advertisement">
+          <span>Advertisement</span>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">🔍 Search Articles</div>
+          <div class="sidebar-widget-body">
+            <div class="sidebar-search">
+              <svg class="sidebar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" placeholder="Search articles..." aria-label="Search blog articles" id="sidebar-search-input">
+              <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">🗂️ Categories</div>
+          <div class="sidebar-widget-body">
+            <nav class="sidebar-category-list" aria-label="Blog categories">
+              <a href="#" class="sidebar-cat-item"><span>🏦 Finance</span><span class="sidebar-cat-count">24</span></a>
+              <a href="#" class="sidebar-cat-item"><span>📈 Investing</span><span class="sidebar-cat-count">18</span></a>
+              <a href="#" class="sidebar-cat-item"><span>🧾 Tax & Legal</span><span class="sidebar-cat-count">12</span></a>
+              <a href="#" class="sidebar-cat-item"><span>💚 Health & Fitness</span><span class="sidebar-cat-count">9</span></a>
+              <a href="#" class="sidebar-cat-item"><span>📘 How-To Guides</span><span class="sidebar-cat-count">15</span></a>
+              <a href="#" class="sidebar-cat-item"><span>📊 Market News</span><span class="sidebar-cat-count">7</span></a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">🔥 Popular Posts</div>
+          <div class="sidebar-widget-body">
+            <div class="sidebar-tool-list">
+              <a href="blog-post.html" class="sidebar-tool-item">
+                <div class="sidebar-tool-icon">📰</div>
+                <div>
+                  <div class="sidebar-tool-name">How to Calculate Home Loan EMI</div>
+                  <div class="sidebar-tool-meta">45K views · 5 min</div>
+                </div>
+              </a>
+              <a href="blog-post.html" class="sidebar-tool-item">
+                <div class="sidebar-tool-icon">📰</div>
+                <div>
+                  <div class="sidebar-tool-name">SIP vs FD: Which is Better?</div>
+                  <div class="sidebar-tool-meta">38K views · 7 min</div>
+                </div>
+              </a>
+              <a href="blog-post.html" class="sidebar-tool-item">
+                <div class="sidebar-tool-icon">📰</div>
+                <div>
+                  <div class="sidebar-tool-name">New Tax Regime 2024-25</div>
+                  <div class="sidebar-tool-meta">32K views · 8 min</div>
+                </div>
+              </a>
+              <a href="blog-post.html" class="sidebar-tool-item">
+                <div class="sidebar-tool-icon">📰</div>
+                <div>
+                  <div class="sidebar-tool-name">Power of Compound Interest</div>
+                  <div class="sidebar-tool-meta">28K views · 5 min</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter Widget -->
+        <div class="sidebar-widget" style="background:var(--gradient-brand);border:none">
+          <div style="padding:var(--space-5)">
+            <h3 style="color:white;font-size:var(--text-base);margin-bottom:var(--space-2)">📧 Weekly Finance Tips</h3>
+            <p style="color:rgba(255,255,255,0.8);font-size:var(--text-sm);margin-bottom:var(--space-4)">Get expert tips every week. Free forever.</p>
+            <form id="sidebar-newsletter" novalidate>
+              <input type="email" placeholder="Your email" style="width:100%;height:40px;border:none;border-radius:var(--radius-md);padding:0 var(--space-4);font-size:var(--text-sm);margin-bottom:var(--space-2)" aria-label="Email for newsletter" required>
+              <button type="submit" style="width:100%;height:40px;background:white;color:var(--clr-primary);border:none;border-radius:var(--radius-md);font-weight:700;cursor:pointer;font-size:var(--text-sm)">Subscribe Free</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="ad-slot ad-slot-rectangle" aria-label="Advertisement">
+          <span>Advertisement</span>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">🧮 Quick Tools</div>
+          <div class="sidebar-widget-body">
+            <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+              <a href="calculator.html?tool=emi-calculator" class="tag" style="justify-content:center">🏦 EMI Calculator</a>
+              <a href="calculator.html?tool=sip-calculator" class="tag" style="justify-content:center">📈 SIP Calculator</a>
+              <a href="calculator.html?tool=fd-calculator" class="tag" style="justify-content:center">💰 FD Calculator</a>
+              <a href="calculator.html?tool=income-tax-calculator" class="tag" style="justify-content:center">🧾 Tax Calculator</a>
+              <a href="calculator.html?tool=age-calculator" class="tag" style="justify-content:center">🎂 Age Calculator</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="assets/logos/logo.png" alt="Needful Calculator" width="32" height="32" loading="lazy">
+          <span class="logo-text">Needful Calculator</span>
+        </a>
+        <p class="footer-desc">Smart Calculators & Useful Online Tools. Built in India, trusted worldwide.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <nav class="footer-links">
+          <a href="calculator.html?tool=emi-calculator">EMI Calculator</a>
+          <a href="calculator.html?tool=sip-calculator">SIP Calculator</a>
+          <a href="calculator.html?tool=fd-calculator">FD Calculator</a>
+          <a href="calculator.html?tool=ppf-calculator">PPF Calculator</a>
+          <a href="calculator.html?tool=income-tax-calculator">Tax Calculator</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Blog Topics</h4>
+        <nav class="footer-links">
+          <a href="category.html#finance">Finance</a>
+          <a href="category.html#finance">Investing</a>
+          <a href="category.html#tax">Tax Saving</a>
+          <a href="category.html#health">Health</a>
+          <a href="blog.html">How-To</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <nav class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="sitemap.html">Sitemap</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Needful Calculator. All rights reserved.</p>
+      <nav class="footer-legal">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/calculator.js" defer></script>
+  <script src="js/search.js" defer></script>
+<script src="js/animations.js" defer></script>
+</body>
+</html>

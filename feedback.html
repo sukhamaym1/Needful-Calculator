@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="has-sticky-header">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="description" content="Share your feedback, suggestions, and feature requests for Needful Calculator. Help us make our free online calculators even better.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://needfulcalculator.com/feedback.html">
+  <title>Send Feedback | Needful Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .feedback-container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://needfulcalculator.com" },
+      { "@type": "ListItem", "position": 2, "name": "Feedback" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Needful Calculator Home">
+      <img src="assets/logos/logo.png" alt="Needful Calculator" width="36" height="36" loading="eager" onerror="this.style.display='none'">
+      <span class="logo-text">Needful Calculator</span>
+    </a>
+    <div class="header-search" role="search">
+      <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="search" id="header-search-input" placeholder="Search calculators..." aria-label="Search" autocomplete="off">
+      <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="category.html" class="nav-link">Calculators</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-links">
+    <a href="index.html">🏠 Home</a>
+    <a href="category.html">🧮 All Calculators</a>
+    <a href="blog.html">📰 Blog</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
+</nav>
+
+<main id="main-content">
+  <!-- Page Header -->
+  <div style="background:var(--gradient-hero);padding-block:var(--space-12) var(--space-10);border-bottom:1px solid var(--border-color)">
+    <div class="container text-center reveal">
+      <nav class="breadcrumb" style="justify-content:center" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" aria-current="page">Feedback</span>
+      </nav>
+      <div class="section-eyebrow">💡 Share Feedback</div>
+      <h1 class="section-title">Help Us Improve Needful Calculator</h1>
+      <p class="section-subtitle">Have a suggestion, feature request, or general feedback? We'd love to hear from you!</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="feedback-container reveal">
+        <div id="form-container">
+          <form id="feedback-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label-text" for="feedback-name">Your Name</label>
+                <input class="form-field" type="text" id="feedback-name" placeholder="Rahul Sharma" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label-text" for="feedback-email">Email Address <span aria-hidden="true" style="color:#EF4444">*</span></label>
+                <input class="form-field" type="email" id="feedback-email" placeholder="rahul@example.com" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label-text" for="feedback-type">Type of Feedback <span aria-hidden="true" style="color:#EF4444">*</span></label>
+              <select class="form-field" id="feedback-type" required style="background-color: var(--bg-surface);">
+                <option value="suggestion">💡 General Suggestion</option>
+                <option value="compliment">❤️ Compliment / Praise</option>
+                <option value="bug">🐛 Calculator / Math Issue</option>
+                <option value="other">❓ Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label-text" for="feedback-message">Your Comments <span aria-hidden="true" style="color:#EF4444">*</span></label>
+              <textarea class="form-field" id="feedback-message" placeholder="Please write your feedback here..." required style="min-height:150px"></textarea>
+            </div>
+            <button class="form-submit" type="submit" id="feedback-submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Submit Feedback
+            </button>
+          </form>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">❤️</div>
+          <h3>Feedback Submitted!</h3>
+          <p>Thank you for sharing your thoughts. We appreciate your feedback as we continue to improve Needful Calculator.</p>
+          <button onclick="document.getElementById('form-container').style.display='block';document.getElementById('form-success').classList.remove('show')" class="btn btn-primary" style="margin-top:var(--space-6)">Send More Feedback</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="assets/logos/logo.png" alt="Needful Calculator" width="32" height="32" loading="lazy" onerror="this.style.display='none'">
+          <span class="logo-text">Needful Calculator</span>
+        </a>
+        <p class="footer-desc">Smart Calculators & Useful Online Tools. Your trusted partner for fast, accurate, and free online calculators. Built in India, trusted worldwide.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn" aria-label="Instagram">◉</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <nav class="footer-links" aria-label="Calculator links">
+          <a href="calculator.html?tool=emi-calculator">EMI Calculator</a>
+          <a href="calculator.html?tool=sip-calculator">SIP Calculator</a>
+          <a href="calculator.html?tool=fd-calculator">FD Calculator</a>
+          <a href="calculator.html?tool=ppf-calculator">PPF Calculator</a>
+          <a href="calculator.html?tool=income-tax-calculator">Income Tax Calculator</a>
+          <a href="calculator.html?tool=gst-calculator">GST Calculator</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <nav class="footer-links" aria-label="Tool links">
+          <a href="calculator.html?tool=age-calculator">Age Calculator</a>
+          <a href="calculator.html?tool=bmi-calculator">BMI Calculator</a>
+          <a href="calculator.html?tool=length-converter">Unit Converter</a>
+          <a href="calculator.html?tool=date-difference">Date Calculator</a>
+          <a href="calculator.html?tool=word-counter">Word Counter</a>
+          <a href="calculator.html?tool=currency-converter">Currency Converter</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <nav class="footer-links" aria-label="Company links">
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="sitemap.html">Sitemap</a>
+          <a href="contact.html">Advertise</a>
+          <a href="feedback.html">Feedback</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="ad-slot" aria-label="Advertisement" role="complementary" style="margin-bottom:var(--space-8)">
+      <span>Advertisement</span>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Needful Calculator. All rights reserved. Made with ❤️ in India.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/calculator.js" defer></script>
+<script src="js/search.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script>
+  /* Form handler */
+  document.getElementById('feedback-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('feedback-submit');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    /* Simulate API call */
+    setTimeout(() => {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('form-success').classList.add('show');
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Feedback`;
+    }, 1000);
+  });
+</script>
+</body>
+</html>

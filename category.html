@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="has-sticky-header">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="description"
+    content="Browse all free online calculators by Needful Calculator. Finance, health, education, unit converters, date calculators and PDF tools — all in one place.">
+  <meta name="keywords"
+    content="all calculators, online tools, finance calculator, health calculator, unit converter, free online tools India">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://needfulcalculator.com/calculators">
+  <title>All Calculators & Online Tools — Finance, Health, Education | Needful Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .cat-page-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .cat-sidebar {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-4));
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .cat-sidebar-header {
+      padding: var(--space-4) var(--space-5);
+      background: var(--gradient-brand);
+      color: white;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .cat-sidebar-list {
+      padding: var(--space-3);
+    }
+
+    .cat-sidebar-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--txt-secondary);
+      cursor: pointer;
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  color 0.2s ease,
+                  border-left-color 0.2s ease;
+      text-decoration: none;
+      gap: var(--space-2);
+      border-left: 3px solid transparent;
+    }
+
+    .cat-sidebar-item:hover,
+    .cat-sidebar-item.active {
+      background: var(--clr-primary-light);
+      color: var(--clr-primary);
+      transform: scale(1.03);
+    }
+
+    .cat-sidebar-item.active {
+      font-weight: 700;
+      border-left-color: var(--clr-primary);
+    }
+
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--clr-primary);
+      z-index: 1100;
+      transition: width 0.1s ease-out;
+    }
+
+    .has-sticky-header .scroll-progress-bar {
+      top: var(--header-height, 70px);
+    }
+
+    .tools-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .tools-count {
+      font-size: var(--text-sm);
+      color: var(--txt-muted);
+      font-weight: 500;
+    }
+
+    .sort-select {
+      height: 38px;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0 var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--txt-secondary);
+      background: var(--bg-surface);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .tools-search-bar {
+      width: 100%;
+      height: 52px;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 0 var(--space-6) 0 var(--space-12);
+      font-size: var(--text-base);
+      background: var(--bg-surface);
+      color: var(--txt-primary);
+      outline: none;
+      margin-bottom: var(--space-6);
+      transition: all var(--transition-fast);
+    }
+
+    .tools-search-bar:focus {
+      border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .tools-search-wrap {
+      position: relative;
+    }
+
+    .tools-search-icon {
+      position: absolute;
+      left: var(--space-4);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--txt-muted);
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+
+    .category-section {
+      margin-bottom: var(--space-12);
+    }
+
+    .category-section-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .category-section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.375rem;
+      flex-shrink: 0;
+    }
+
+    .category-section-title {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--txt-primary);
+    }
+
+    .category-section-count {
+      margin-left: auto;
+      font-size: var(--text-sm);
+      color: var(--txt-muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+      .cat-page-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cat-sidebar {
+        position: relative;
+        top: auto;
+      }
+
+      .cat-sidebar-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        padding: var(--space-3);
+      }
+
+      .cat-sidebar-item {
+        flex: 0 0 auto;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "All Calculators & Online Tools",
+    "url": "https://needfulcalculator.com/calculators",
+    "description": "Browse 100+ free online calculators: Finance, Health, Education, Unit Converters, Date Calculators, and PDF Tools.",
+    "publisher": { "@type": "Organization", "name": "Needful Calculator" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://needfulcalculator.com" },
+      { "@type": "ListItem", "position": 2, "name": "All Calculators", "item": "https://needfulcalculator.com/calculators" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Needful Calculator Home">
+        <img src="assets/logos/logo.png" alt="Needful Calculator" width="36" height="36" loading="eager">
+        <span class="logo-text">Needful Calculator</span>
+      </a>
+      <div class="header-search" role="search">
+        <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+        </svg>
+        <input type="search" placeholder="Search calculators..." aria-label="Search calculators" autocomplete="off"
+          id="header-search-input">
+        <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="category.html" class="nav-link active">Calculators</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="category.html">🧮 All Calculators</a>
+      <a href="blog.html">📰 Blog</a>
+      <a href="about.html">ℹ️ About</a>
+      <a href="contact.html">📞 Contact</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Category Hero -->
+    <div
+      style="background:var(--gradient-hero);padding-block:var(--space-12) var(--space-10);border-bottom:1px solid var(--border-color)">
+      <div class="container text-center reveal">
+        <div class="section-eyebrow">🧮 All Tools</div>
+        <h1 class="section-title">100+ Free Online Calculators</h1>
+        <p class="section-subtitle">From financial planning to health and education — find the perfect tool for every
+          calculation.</p>
+      </div>
+    </div>
+
+    <div class="container section">
+
+      <!-- Ad Slot: Top -->
+      <div class="ad-slot ad-slot-leaderboard reveal" aria-label="Advertisement">
+        <span>Advertisement</span>
+      </div>
+
+      <div class="cat-page-layout">
+        <!-- Category Sidebar -->
+        <aside class="cat-sidebar" aria-label="Filter by category">
+          <div class="cat-sidebar-header">📂 Categories</div>
+          <nav class="cat-sidebar-list" aria-label="Tool categories">
+            <a href="#all" class="cat-sidebar-item active" id="cat-all">
+              <span>🏠 All Tools</span>
+              <span class="sidebar-cat-count">103</span>
+            </a>
+            <a href="#finance" class="cat-sidebar-item" id="cat-nav-finance">
+              <span>🏦 Finance Tools</span>
+              <span class="sidebar-cat-count">35</span>
+            </a>
+            <a href="#health" class="cat-sidebar-item" id="cat-nav-health">
+              <span>💚 Health</span>
+              <span class="sidebar-cat-count">18</span>
+            </a>
+            <a href="#education" class="cat-sidebar-item" id="cat-nav-education">
+              <span>📚 Education</span>
+              <span class="sidebar-cat-count">12</span>
+            </a>
+            <a href="#unit" class="cat-sidebar-item" id="cat-nav-unit">
+              <span>🔁 Unit Converters</span>
+              <span class="sidebar-cat-count">20</span>
+            </a>
+            <a href="#date" class="cat-sidebar-item" id="cat-nav-date">
+              <span>📅 Date & Time</span>
+              <span class="sidebar-cat-count">10</span>
+            </a>
+            <a href="#pdf" class="cat-sidebar-item" id="cat-nav-pdf">
+              <span>📄 PDF Tools</span>
+              <span class="sidebar-cat-count">8</span>
+            </a>
+            <a href="#insurance" class="cat-sidebar-item" id="cat-nav-insurance">
+              <span>🛡️ Insurance</span>
+              <span class="sidebar-cat-count">0</span>
+            </a>
+            <a href="#tax" class="cat-sidebar-item" id="cat-nav-tax">
+              <span>💰 Tax</span>
+              <span class="sidebar-cat-count">0</span>
+            </a>
+          </nav>
+        </aside>
+
+        <!-- Tools Grid -->
+        <div>
+          <!-- Search bar -->
+          <div class="tools-search-wrap reveal">
+            <svg class="tools-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+            <input type="search" class="tools-search-bar" placeholder="Search across all 103 tools..."
+              aria-label="Search all tools" id="tools-search">
+          </div>
+
+          <!-- Finance Section -->
+          <section class="category-section reveal" id="finance" aria-labelledby="finance-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-finance">🏦</div>
+              <h2 class="category-section-title" id="finance-heading">Finance Tools</h2>
+              <span class="category-section-count">35 Tools</span>
+            </div>
+            <div class="grid-3">
+              <article class="tool-card" id="tool-emi">
+                <div class="tool-card-icon">🏦</div>
+                <h3 class="tool-card-name">EMI Calculator</h3>
+                <p class="tool-card-desc">Calculate home, car, and personal loan EMI with amortization schedule and
+                  charts.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Popular</span>
+                  <a href="calculator.html?tool=emi-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-sip">
+                <div class="tool-card-icon">📈</div>
+                <h3 class="tool-card-name">SIP Calculator</h3>
+                <p class="tool-card-desc">Plan mutual fund SIP returns with the power of compounding over time.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Popular</span>
+                  <a href="calculator.html?tool=sip-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-fd">
+                <div class="tool-card-icon">💰</div>
+                <h3 class="tool-card-name">FD Calculator</h3>
+                <p class="tool-card-desc">Calculate fixed deposit maturity amount and total interest earned.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-new">Updated</span>
+                  <a href="calculator.html?tool=fd-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-ppf">
+                <div class="tool-card-icon">🏛️</div>
+                <h3 class="tool-card-name">PPF Calculator</h3>
+                <p class="tool-card-desc">Estimate PPF maturity with 15-year projection and extension options.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Finance</span>
+                  <a href="calculator.html?tool=ppf-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-tax">
+                <div class="tool-card-icon">🧾</div>
+                <h3 class="tool-card-name">Income Tax Calculator</h3>
+                <p class="tool-card-desc">Compare Old vs New regime tax for FY 2024-25 with deduction planning.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-trending">Trending</span>
+                  <a href="calculator.html?tool=income-tax-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-gst">
+                <div class="tool-card-icon">🧮</div>
+                <h3 class="tool-card-name">GST Calculator</h3>
+                <p class="tool-card-desc">Calculate GST inclusive/exclusive amount for all Indian GST slabs.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Finance</span>
+                  <a href="calculator.html?tool=gst-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-compound">
+                <div class="tool-card-icon">📊</div>
+                <h3 class="tool-card-name">Compound Interest</h3>
+                <p class="tool-card-desc">See how your investments grow exponentially with compound interest.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Finance</span>
+                  <a href="calculator.html?tool=compound-interest" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-currency">
+                <div class="tool-card-icon">💱</div>
+                <h3 class="tool-card-name">Currency Converter</h3>
+                <p class="tool-card-desc">Convert between 150+ world currencies with live exchange rates.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Live</span>
+                  <a href="calculator.html?tool=currency-converter" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-retirement">
+                <div class="tool-card-icon">👴</div>
+                <h3 class="tool-card-name">Retirement Calculator</h3>
+                <p class="tool-card-desc">Plan your retirement corpus and monthly savings needed to retire comfortably.
+                </p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Finance</span>
+                  <a href="calculator.html?tool=retirement-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+            </div>
+          </section>
+
+          <!-- Ad Slot: Mid Page -->
+          <div class="ad-slot reveal" aria-label="Advertisement">
+            <span>Advertisement</span>
+          </div>
+
+          <!-- Health Section -->
+          <section class="category-section reveal" id="health" aria-labelledby="health-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-health">💚</div>
+              <h2 class="category-section-title" id="health-heading">Health Calculators</h2>
+              <span class="category-section-count">18 Tools</span>
+            </div>
+            <div class="grid-3">
+              <article class="tool-card" id="tool-bmi">
+                <div class="tool-card-icon">⚖️</div>
+                <h3 class="tool-card-name">BMI Calculator</h3>
+                <p class="tool-card-desc">Calculate Body Mass Index and understand what your weight means for your
+                  health.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Health</span>
+                  <a href="calculator.html?tool=bmi-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-calorie">
+                <div class="tool-card-icon">🥗</div>
+                <h3 class="tool-card-name">Calorie Calculator</h3>
+                <p class="tool-card-desc">Find your daily calorie needs based on age, weight, height, and activity
+                  level.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Health</span>
+                  <a href="calculator.html?tool=calorie-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-ideal-weight">
+                <div class="tool-card-icon">🏃</div>
+                <h3 class="tool-card-name">Ideal Weight Calculator</h3>
+                <p class="tool-card-desc">Find your ideal body weight using multiple validated formulas (Hamwi, Devine,
+                  Miller).</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Health</span>
+                  <a href="calculator.html?tool=ideal-weight" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-water">
+                <div class="tool-card-icon">💧</div>
+                <h3 class="tool-card-name">Water Intake Calculator</h3>
+                <p class="tool-card-desc">Calculate your recommended daily water intake based on weight and activity
+                  level.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Health</span>
+                  <a href="calculator.html?tool=water-intake" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-pregnancy">
+                <div class="tool-card-icon">🤱</div>
+                <h3 class="tool-card-name">Pregnancy Due Date</h3>
+                <p class="tool-card-desc">Calculate your expected due date from LMP or conception date with week-by-week
+                  tracking.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Health</span>
+                  <a href="calculator.html?tool=pregnancy-due-date" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-sleep">
+                <div class="tool-card-icon">😴</div>
+                <h3 class="tool-card-name">Sleep Calculator</h3>
+                <p class="tool-card-desc">Find the best bedtime or wake-up time based on 90-minute sleep cycles.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Health</span>
+                  <a href="calculator.html?tool=sleep-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Education Section -->
+          <section class="category-section reveal" id="education" aria-labelledby="education-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-education">📚</div>
+              <h2 class="category-section-title" id="education-heading">Education Tools</h2>
+              <span class="category-section-count">0 Tools</span>
+            </div>
+            <div class="grid-3"></div>
+          </section>
+
+          <!-- Unit Converters -->
+          <section class="category-section reveal" id="unit" aria-labelledby="unit-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-unit">🔁</div>
+              <h2 class="category-section-title" id="unit-heading">Unit Converters</h2>
+              <span class="category-section-count">20 Tools</span>
+            </div>
+            <div class="grid-3">
+              <article class="tool-card" id="tool-length">
+                <div class="tool-card-icon">📏</div>
+                <h3 class="tool-card-name">Length Converter</h3>
+                <p class="tool-card-desc">Convert between meters, feet, inches, km, miles, cm, and more instantly.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Unit</span>
+                  <a href="calculator.html?tool=length-converter" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-weight">
+                <div class="tool-card-icon">⚖️</div>
+                <h3 class="tool-card-name">Weight Converter</h3>
+                <p class="tool-card-desc">Convert kg, pounds, ounces, grams, tons and other weight units easily.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Unit</span>
+                  <a href="calculator.html?tool=weight-converter" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-temp">
+                <div class="tool-card-icon">🌡️</div>
+                <h3 class="tool-card-name">Temperature Converter</h3>
+                <p class="tool-card-desc">Convert Celsius, Fahrenheit, and Kelvin temperatures in real time.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Unit</span>
+                  <a href="calculator.html?tool=temperature-converter" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Date Section -->
+          <section class="category-section reveal" id="date" aria-labelledby="date-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-date">📅</div>
+              <h2 class="category-section-title" id="date-heading">Date & Time Calculators</h2>
+              <span class="category-section-count">10 Tools</span>
+            </div>
+            <div class="grid-3">
+              <article class="tool-card" id="tool-age">
+                <div class="tool-card-icon">🎂</div>
+                <h3 class="tool-card-name">Age Calculator</h3>
+                <p class="tool-card-desc">Find your exact age in years, months, days, hours and minutes from date of
+                  birth.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-primary">Popular</span>
+                  <a href="calculator.html?tool=age-calculator" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-date-diff">
+                <div class="tool-card-icon">📅</div>
+                <h3 class="tool-card-name">Date Difference</h3>
+                <p class="tool-card-desc">Calculate the exact difference between two dates in days, weeks, months,
+                  years.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Date</span>
+                  <a href="calculator.html?tool=date-difference" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-day">
+                <div class="tool-card-icon">🗓️</div>
+                <h3 class="tool-card-name">Day of Week Calculator</h3>
+                <p class="tool-card-desc">Find out what day of the week any date falls on — past, present, or future.
+                </p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-accent">Date</span>
+                  <a href="calculator.html?tool=day-of-week" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- PDF Section -->
+          <section class="category-section reveal" id="pdf" aria-labelledby="pdf-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-pdf">📄</div>
+              <h2 class="category-section-title" id="pdf-heading">PDF Tools</h2>
+              <span class="category-section-count">8 Tools</span>
+            </div>
+            <div class="grid-3">
+              <article class="tool-card" id="tool-pdf-merge">
+                <div class="tool-card-icon">🔗</div>
+                <h3 class="tool-card-name">Merge PDF</h3>
+                <p class="tool-card-desc">Combine multiple PDF files into a single document, quickly and securely.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-new">New</span>
+                  <a href="calculator.html?tool=merge-pdf" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-pdf-compress">
+                <div class="tool-card-icon">📦</div>
+                <h3 class="tool-card-name">Compress PDF</h3>
+                <p class="tool-card-desc">Reduce PDF file size without losing quality for easy sharing and uploading.
+                </p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-new">New</span>
+                  <a href="calculator.html?tool=compress-pdf" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+              <article class="tool-card" id="tool-pdf-convert">
+                <div class="tool-card-icon">🔄</div>
+                <h3 class="tool-card-name">PDF to Word</h3>
+                <p class="tool-card-desc">Convert PDF documents to editable Word (.docx) format instantly.</p>
+                <div class="tool-card-footer">
+                  <span class="badge badge-new">New</span>
+                  <a href="calculator.html?tool=pdf-to-word" class="tool-card-open">Open <span
+                      class="tool-card-arrow">→</span></a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Insurance Section -->
+          <section class="category-section reveal" id="insurance" aria-labelledby="insurance-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-insurance">🛡️</div>
+              <div>
+                <h2 class="category-section-title" id="insurance-heading">Insurance Calculators</h2>
+                <p class="category-section-desc" style="font-size: var(--text-sm); color: var(--txt-muted); margin-top: 2px;">Plan your financial protection and insurance needs with our insurance calculators.</p>
+              </div>
+              <span class="category-section-count">0 Tools</span>
+            </div>
+            <div class="grid-3"></div>
+          </section>
+
+          <!-- Tax Section -->
+          <section class="category-section reveal" id="tax" aria-labelledby="tax-heading">
+            <div class="category-section-header">
+              <div class="category-section-icon cat-tax">💰</div>
+              <div>
+                <h2 class="category-section-title" id="tax-heading">Tax Calculators</h2>
+                <p class="category-section-desc" style="font-size: var(--text-sm); color: var(--txt-muted); margin-top: 2px;">Calculate income tax, GST, TDS, HRA exemptions, and plan tax savings.</p>
+              </div>
+              <span class="category-section-count">0 Tools</span>
+            </div>
+            <div class="grid-3"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logos/logo.png" alt="Needful Calculator" width="32" height="32" loading="lazy">
+            <span class="logo-text">Needful Calculator</span>
+          </a>
+          <p class="footer-desc">Smart Calculators & Useful Online Tools. Built in India, trusted worldwide.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Finance</h4>
+          <nav class="footer-links">
+            <a href="calculator.html?tool=emi-calculator">EMI Calculator</a>
+            <a href="calculator.html?tool=sip-calculator">SIP Calculator</a>
+            <a href="calculator.html?tool=fd-calculator">FD Calculator</a>
+            <a href="calculator.html?tool=income-tax-calculator">Tax Calculator</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Health & Other</h4>
+          <nav class="footer-links">
+            <a href="calculator.html?tool=bmi-calculator">BMI Calculator</a>
+            <a href="calculator.html?tool=age-calculator">Age Calculator</a>
+            <a href="calculator.html?tool=length-converter">Unit Converter</a>
+            <a href="category.html#pdf">PDF Tools</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <nav class="footer-links">
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="sitemap.html">Sitemap</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Needful Calculator. All rights reserved.</p>
+        <nav class="footer-legal">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/animations.js" defer></script>
+</body>
+
+</html>

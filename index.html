@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="has-sticky-header">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="description"
+    content="Needful Calculator — 100+ free online calculators and tools. EMI, SIP, FD, PPF, Income Tax, Age calculator and more. Fast, accurate and free.">
+  <meta name="keywords"
+    content="EMI calculator, SIP calculator, FD calculator, PPF calculator, income tax calculator, online calculators, financial tools">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Needful Calculator — Smart Calculators & Useful Online Tools">
+  <meta property="og:description"
+    content="100+ free online calculators. Fast, accurate, and free. EMI, SIP, FD, Tax, Health and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://needfulcalculator.com">
+  <link rel="canonical" href="https://needfulcalculator.com">
+  <title>Needful Calculator — Smart Calculators & Useful Online Tools</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Needful Calculator",
+    "url": "https://needfulcalculator.com",
+    "description": "100+ free online calculators and useful tools. Fast, accurate, and free.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://needfulcalculator.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Needful Calculator",
+    "url": "https://needfulcalculator.com",
+    "logo": "https://needfulcalculator.com/assets/logo.png",
+    "sameAs": []
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ═══════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo" aria-label="Needful Calculator Home">
+        <img src="assets/logos/logo.png" alt="Needful Calculator" width="36" height="36" loading="eager">
+        <span class="logo-text">Needful Calculator</span>
+      </a>
+
+      <!-- Header Search -->
+      <div class="header-search" role="search">
+        <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+        </svg>
+        <input type="search" placeholder="Search calculators..." aria-label="Search calculators and tools"
+          autocomplete="off" id="header-search-input">
+        <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <div class="nav-item">
+          <a href="category.html" class="nav-link" aria-haspopup="true">
+            Calculators ▾
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="category.html#finance" role="menuitem">🏦 Finance Tools</a>
+            <a href="category.html#health" role="menuitem">💚 Health Calculators</a>
+            <a href="category.html#education" role="menuitem">📚 Education Tools</a>
+            <a href="category.html#unit" role="menuitem">🔁 Unit Converters</a>
+            <a href="category.html#date" role="menuitem">📅 Date Calculators</a>
+            <a href="category.html#pdf" role="menuitem">📄 PDF Tools</a>
+          </div>
+        </div>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <!-- Icon injected by JS -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="category.html">🧮 All Calculators</a>
+      <a href="calculator.html">🏦 EMI Calculator</a>
+      <a href="blog.html">📰 Blog</a>
+      <a href="about.html">ℹ️ About</a>
+      <a href="contact.html">📞 Contact</a>
+    </div>
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border-color)">
+      <p
+        style="font-size:0.75rem;color:var(--txt-muted);margin-bottom:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">
+        Categories</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
+        <a href="category.html#finance" class="tag">🏦 Finance</a>
+        <a href="category.html#health" class="tag">💚 Health</a>
+        <a href="category.html#education" class="tag">📚 Education</a>
+        <a href="category.html#unit" class="tag">🔁 Units</a>
+        <a href="category.html#date" class="tag">📅 Date</a>
+        <a href="category.html#pdf" class="tag">📄 PDF</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- ── HERO ── -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <div class="hero-eyebrow" aria-hidden="true">
+          Trusted by 5 Million+ Users
+        </div>
+
+        <h1 class="hero-title" id="hero-heading">
+          100+ Smart Calculators<br>and Online Tools
+        </h1>
+
+        <p class="hero-subtitle">
+          Fast, Accurate and Free Online Calculators — Built for India, Trusted Worldwide
+        </p>
+
+        <!-- Hero Search -->
+        <div class="hero-search" role="search">
+          <svg class="hero-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+          <input type="search" id="hero-search" placeholder="Search calculators, tools, and utilities..."
+            aria-label="Search calculators and tools" autocomplete="off">
+          <button class="hero-search-btn" type="button" aria-label="Search">Search</button>
+          <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta">
+          <a href="category.html" class="btn btn-primary btn-lg" id="explore-tools-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M3 12h18M12 3l9 9-9 9" />
+            </svg>
+            Explore Tools
+          </a>
+          <a href="#popular-calculators" class="btn btn-secondary btn-lg" id="popular-btn">
+            ⭐ Popular Calculators
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats" aria-label="Platform statistics">
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="100" data-suffix="+">100+</span>
+            <span class="hero-stat-label">Free Tools</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="5" data-suffix="M+">5M+</span>
+            <span class="hero-stat-label">Monthly Users</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="99" data-suffix="%">99%</span>
+            <span class="hero-stat-label">Accuracy</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="8" data-suffix=" Categories">6 Categories</span>
+            <span class="hero-stat-label">Tool Types</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AD SLOT #1: Below Hero ── -->
+    <div class="container">
+      <div class="ad-slot ad-slot-leaderboard" aria-label="Advertisement" role="complementary">
+        <!-- Google AdSense: Leaderboard 728x90 -->
+        <span>Advertisement</span>
+      </div>
+    </div>
+
+    <!-- ── POPULAR CALCULATORS ── -->
+    <section class="section" id="popular-calculators" aria-labelledby="popular-heading">
+      <div class="container">
+        <div class="text-center mb-8 reveal">
+          <div class="section-eyebrow">⭐ Most Used</div>
+          <h2 class="section-title" id="popular-heading">Popular Calculators</h2>
+          <p class="section-subtitle">Our most-used financial and utility calculators, trusted by millions every month.
+          </p>
+        </div>
+
+        <div class="grid-3 reveal reveal-delay-1">
+          <!-- EMI Calculator -->
+          <article class="tool-card" id="emi-calc-card">
+            <div class="tool-card-icon" aria-hidden="true">🏦</div>
+            <h3 class="tool-card-name">EMI Calculator</h3>
+            <p class="tool-card-desc">Calculate your monthly loan instalment for home, car, or personal loans with a
+              detailed amortization schedule.</p>
+            <div class="tool-card-footer">
+              <span class="badge badge-primary">Finance</span>
+              <a href="calculator.html" class="tool-card-open" aria-label="Open EMI Calculator">
+                Open Tool <span class="tool-card-arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SIP Calculator -->
+          <article class="tool-card" id="sip-calc-card">
+            <div class="tool-card-icon" aria-hidden="true">📈</div>
+            <h3 class="tool-card-name">SIP Calculator</h3>
+            <p class="tool-card-desc">Plan your mutual fund SIP investments and see the power of compounding over time
+              with visual charts.</p>
+            <div class="tool-card-footer">
+              <span class="badge badge-primary">Finance</span>
+              <a href="calculator.html?tool=sip-calculator" class="tool-card-open" aria-label="Open SIP Calculator">
+                Open Tool <span class="tool-card-arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- FD Calculator -->
+          <article class="tool-card" id="fd-calc-card">
+            <div class="tool-card-icon" aria-hidden="true">💰</div>
+            <h3 class="tool-card-name">FD Calculator</h3>
+            <p class="tool-card-desc">Calculate maturity amount and interest earned on your Fixed Deposit for any tenure
+              and interest rate.</p>
+            <div class="tool-card-footer">
+              <span class="badge badge-primary">Finance</span>
+              <a href="calculator.html?tool=fd-calculator" class="tool-card-open" aria-label="Open FD Calculator">
+                Open Tool <span class="tool-card-arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- PPF Calculator -->
+          <article class="tool-card" id="ppf-calc-card">
+            <div class="tool-card-icon" aria-hidden="true">🏛️</div>
+            <h3 class="tool-card-name">PPF Calculator</h3>
+            <p class="tool-card-desc">Estimate your Public Provident Fund maturity amount with year-wise interest
+              breakdown and charts.</p>
+            <div class="tool-card-footer">
+              <span class="badge badge-primary">Finance</span>
+              <a href="calculator.html?tool=ppf-calculator" class="tool-card-open" aria-label="Open PPF Calculator">
+                Open Tool <span class="tool-card-arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Income Tax Calculator -->
+          <article class="tool-card" id="tax-calc-card">
+            <div class="tool-card-icon" aria-hidden="true">🧾</div>
+            <h3 class="tool-card-name">Income Tax Calculator</h3>
+            <p class="tool-card-desc">Compute your income tax under both Old and New Tax Regimes for FY 2024-25 with
+              deduction planning.</p>
+            <div class="tool-card-footer">
+              <span class="badge badge-trending">Tax</span>
+              <a href="calculator.html?tool=income-tax-calculator" class="tool-card-open"
+                aria-label="Open Income Tax Calculator">
+                Open Tool <span class="tool-card-arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Age Calculator -->
+          <article class="tool-card" id="age-calc-card">
+            <div class="tool-card-icon" aria-hidden="true">🎂</div>
+            <h3 class="tool-card-name">Age Calculator</h3>
+            <p class="tool-card-desc">Find your exact age in years, months, days, hours and minutes from your date of
+              birth instantly.</p>
+            <div class="tool-card-footer">
+              <span class="badge badge-accent">Date</span>
+              <a href="calculator.html?tool=age-calculator" class="tool-card-open" aria-label="Open Age Calculator">
+                Open Tool <span class="tool-card-arrow">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-8 reveal">
+          <a href="category.html" class="btn btn-ghost btn-lg" id="view-all-btn">
+            View All 100+ Tools →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CATEGORIES GRID ── -->
+    <section class="section" style="background:var(--bg-muted)" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="text-center mb-8 reveal">
+          <div class="section-eyebrow">🗂️ Browse by Category</div>
+          <h2 class="section-title" id="categories-heading">Explore Our Tool Categories</h2>
+          <p class="section-subtitle">From financial planning to health tracking — find the right tool for every need.
+          </p>
+        </div>
+
+        <div class="grid-3 reveal reveal-delay-1">
+          <a href="#" class="category-card" id="cat-finance" aria-label="Finance Tools - 35 tools">
+            <div class="category-icon cat-finance">🏦</div>
+            <div class="category-name">Finance Tools</div>
+            <div class="category-count">35 Tools</div>
+          </a>
+
+          <a href="#" class="category-card" id="cat-health" aria-label="Health Calculators - 18 tools">
+            <div class="category-icon cat-health">💚</div>
+            <div class="category-name">Health Calculators</div>
+            <div class="category-count">18 Tools</div>
+          </a>
+
+          <a href="#" class="category-card" id="cat-education" aria-label="Education Tools - 12 tools">
+            <div class="category-icon cat-education">📚</div>
+            <div class="category-name">Education Tools</div>
+            <div class="category-count">12 Tools</div>
+          </a>
+
+          <a href="#" class="category-card" id="cat-unit" aria-label="Unit Converters - 20 tools">
+            <div class="category-icon cat-unit">🔁</div>
+            <div class="category-name">Unit Converters</div>
+            <div class="category-count">20 Tools</div>
+          </a>
+
+          <a href="#" class="category-card" id="cat-date" aria-label="Date Calculators - 10 tools">
+            <div class="category-icon cat-date">📅</div>
+            <div class="category-name">Date Calculators</div>
+            <div class="category-count">10 Tools</div>
+          </a>
+
+          <a href="#" class="category-card" id="cat-pdf" aria-label="PDF Tools - 8 tools">
+            <div class="category-icon cat-pdf">📄</div>
+            <div class="category-name">PDF Tools</div>
+            <div class="category-count">8 Tools</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AD SLOT #2: Mid Content ── -->
+    <div class="container">
+      <div class="ad-slot" aria-label="Advertisement" role="complementary">
+        <!-- Google AdSense: Responsive Banner -->
+        <span>Advertisement</span>
+      </div>
+    </div>
+
+    <!-- ── TRENDING TOOLS ── -->
+    <section class="section" aria-labelledby="trending-heading">
+      <div class="container">
+        <div class="text-center mb-8 reveal">
+          <div class="section-eyebrow">🔥 Trending</div>
+          <h2 class="section-title" id="trending-heading">Trending Tools Right Now</h2>
+          <p class="section-subtitle">What millions of users are calculating today.</p>
+        </div>
+
+        <div class="trending-grid reveal reveal-delay-1">
+          <a href="calculator.html?tool=emi-calculator" class="trending-card" id="trend-1">
+            <span class="trending-rank">01</span>
+            <div class="trending-icon">🏦</div>
+            <div>
+              <div class="trending-name">Home Loan EMI Calculator</div>
+              <div class="trending-meta">Finance · 1.2M uses today</div>
+            </div>
+          </a>
+          <a href="calculator.html?tool=sip-calculator" class="trending-card" id="trend-2">
+            <span class="trending-rank">02</span>
+            <div class="trending-icon">📈</div>
+            <div>
+              <div class="trending-name">SIP Returns Calculator</div>
+              <div class="trending-meta">Finance · 980K uses today</div>
+            </div>
+          </a>
+          <a href="calculator.html?tool=income-tax-calculator" class="trending-card" id="trend-3">
+            <span class="trending-rank">03</span>
+            <div class="trending-icon">🧾</div>
+            <div>
+              <div class="trending-name">Income Tax Calculator 2024</div>
+              <div class="trending-meta">Tax · 870K uses today</div>
+            </div>
+          </a>
+          <a href="calculator.html?tool=age-calculator" class="trending-card" id="trend-4">
+            <span class="trending-rank">04</span>
+            <div class="trending-icon">🎂</div>
+            <div>
+              <div class="trending-name">Age Calculator</div>
+              <div class="trending-meta">Date · 650K uses today</div>
+            </div>
+          </a>
+          <a href="calculator.html?tool=bmi-calculator" class="trending-card" id="trend-5">
+            <span class="trending-rank">05</span>
+            <div class="trending-icon">⚖️</div>
+            <div>
+              <div class="trending-name">BMI Calculator</div>
+              <div class="trending-meta">Health · 540K uses today</div>
+            </div>
+          </a>
+          <a href="calculator.html?tool=fd-calculator" class="trending-card" id="trend-6">
+            <span class="trending-rank">06</span>
+            <div class="trending-icon">💰</div>
+            <div>
+              <div class="trending-name">FD Maturity Calculator</div>
+              <div class="trending-meta">Finance · 490K uses today</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LATEST ARTICLES ── -->
+    <section class="section" style="background:var(--bg-muted)" aria-labelledby="articles-heading">
+      <div class="container">
+        <div class="text-center mb-8 reveal">
+          <div class="section-eyebrow">📰 Latest</div>
+          <h2 class="section-title" id="articles-heading">Latest Articles & Guides</h2>
+          <p class="section-subtitle">Expert-written guides to help you make smarter financial decisions.</p>
+        </div>
+
+        <div class="grid-3 reveal reveal-delay-1">
+          <!-- Article 1 -->
+          <article class="blog-card" id="article-1">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80"
+                alt="How to Calculate Home Loan EMI" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-primary">Finance</span>
+                <span>June 20, 2025</span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="blog-card-title">How to Calculate Home Loan EMI: A Complete Guide for 2025</h3>
+              <p class="blog-card-excerpt">Understanding your monthly EMI before taking a home loan can save you lakhs.
+                Learn the exact formula, tips to reduce EMI, and how to use our calculator.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">By Needful Team</span>
+                <a href="blog-post.html" class="read-more" aria-label="Read full article about Home Loan EMI">Read More
+                  →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="blog-card" id="article-2">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80"
+                alt="SIP vs FD Investment Comparison" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-primary">Investing</span>
+                <span>June 15, 2025</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="blog-card-title">SIP vs FD: Which Investment is Better for You in 2025?</h3>
+              <p class="blog-card-excerpt">A detailed comparison of Systematic Investment Plans and Fixed Deposits —
+                returns, risk, liquidity, and tax implications explained simply.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">By Needful Team</span>
+                <a href="blog-post.html" class="read-more" aria-label="Read SIP vs FD article">Read More →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="blog-card" id="article-3">
+            <div class="blog-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80"
+                alt="New Tax Regime 2024-25 Guide" class="blog-card-image" loading="lazy" width="600" height="338">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="badge badge-trending">Tax</span>
+                <span>June 10, 2025</span>
+                <span>8 min read</span>
+              </div>
+              <h3 class="blog-card-title">New Tax Regime vs Old: Which Should You Choose for FY 2024-25?</h3>
+              <p class="blog-card-excerpt">Budget 2025 brought major changes to income tax. We break down which tax
+                regime saves you more money with real-world examples and our calculator.</p>
+              <div class="blog-card-footer">
+                <span style="font-size:var(--text-xs);color:var(--txt-muted)">By Needful Team</span>
+                <a href="blog-post.html" class="read-more" aria-label="Read New Tax Regime article">Read More →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-8 reveal">
+          <a href="blog.html" class="btn btn-ghost btn-lg" id="view-blog-btn">View All Articles →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHY CHOOSE US ── -->
+    <section class="section" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="text-center mb-8 reveal">
+          <div class="section-eyebrow">💎 Why Us</div>
+          <h2 class="section-title" id="why-heading">Why Choose Needful Calculator?</h2>
+          <p class="section-subtitle">Built for accuracy, speed, and simplicity — because your time and money matter.
+          </p>
+        </div>
+
+        <div class="grid-4 reveal reveal-delay-1">
+          <div class="feature-card" id="feature-1">
+            <div class="feature-icon" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE)">⚡</div>
+            <div class="feature-body">
+              <div class="feature-title">Lightning Fast</div>
+              <p class="feature-text">Instant results with no page reloads. Our calculators respond in milliseconds.</p>
+            </div>
+          </div>
+
+          <div class="feature-card" id="feature-2">
+            <div class="feature-icon" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7)">✅</div>
+            <div class="feature-body">
+              <div class="feature-title">100% Accurate</div>
+              <p class="feature-text">Verified formulas cross-checked with official banking and government standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card" id="feature-3">
+            <div class="feature-icon" style="background:linear-gradient(135deg,#FAF5FF,#EDE9FE)">🔒</div>
+            <div class="feature-body">
+              <div class="feature-title">Privacy First</div>
+              <p class="feature-text">All calculations happen in your browser. We never store your financial data.</p>
+            </div>
+          </div>
+
+          <div class="feature-card" id="feature-4">
+            <div class="feature-icon" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7)">📱</div>
+            <div class="feature-body">
+              <div class="feature-title">Mobile Friendly</div>
+              <p class="feature-text">Fully responsive design — works perfectly on any device, from phone to desktop.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AD SLOT #3: Before FAQ ── -->
+    <div class="container">
+      <div class="ad-slot" aria-label="Advertisement" role="complementary">
+        <!-- Google AdSense: Responsive Banner -->
+        <span>Advertisement</span>
+      </div>
+    </div>
+
+    <!-- ── FAQ SECTION ── -->
+    <section class="section" style="background:var(--bg-muted)" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="grid-2" style="gap:var(--space-12);align-items:start">
+          <div class="reveal">
+            <div class="section-eyebrow">❓ FAQ</div>
+            <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+            <p class="section-subtitle" style="margin-inline:0">Everything you need to know about Needful Calculator and
+              our tools.</p>
+            <a href="#" class="btn btn-primary mt-6" style="width:fit-content">Ask a Question →</a>
+          </div>
+
+          <div class="faq-list reveal reveal-delay-1" id="faq-list" role="list">
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-1-answer">
+                <span>Are all calculators completely free to use?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="faq-answer" id="faq-1-answer" role="region">
+                <div class="faq-answer-inner">
+                  Yes! All 100+ calculators and tools on Needful Calculator are completely free to use, forever. No
+                  registration, no hidden fees, no subscription required. We're supported by non-intrusive
+                  advertisements.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-2-answer">
+                <span>How accurate are the calculation results?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="faq-answer" id="faq-2-answer" role="region">
+                <div class="faq-answer-inner">
+                  All our calculators use verified mathematical formulas aligned with RBI guidelines, SEBI standards,
+                  and Income Tax department norms. Results are accurate to the last rupee. We recommend using these
+                  results for planning — always verify with your bank or financial advisor for final decisions.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-3-answer">
+                <span>Is my financial data stored anywhere?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="faq-answer" id="faq-3-answer" role="region">
+                <div class="faq-answer-inner">
+                  No. All calculations run entirely in your browser using JavaScript. We do not collect, store, or
+                  transmit any of your financial inputs. Your data stays completely private on your device.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-4-answer">
+                <span>Can I use these tools on my mobile phone?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="faq-answer" id="faq-4-answer" role="region">
+                <div class="faq-answer-inner">
+                  Absolutely! Needful Calculator is built mobile-first. All tools work seamlessly on smartphones,
+                  tablets, and desktops. The layout adapts automatically to your screen size for the best experience.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-5-answer">
+                <span>How often are the calculators updated?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="faq-answer" id="faq-5-answer" role="region">
+                <div class="faq-answer-inner">
+                  We update our calculators immediately whenever there are changes to tax slabs, interest rates, or
+                  financial regulations. Our Income Tax Calculator is updated every budget season, and our EMI and FD
+                  calculators reflect current RBI repo rates.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NEWSLETTER ── -->
+    <section class="section-sm" aria-labelledby="newsletter-heading">
+      <div class="container">
+        <div class="newsletter-section reveal">
+          <div class="newsletter-inner">
+            <div class="newsletter-copy">
+              <h2 id="newsletter-heading">Stay Updated with Financial Tips</h2>
+              <p>Get weekly calculator updates, tax tips, and financial insights — free.</p>
+            </div>
+            <form class="newsletter-form" id="newsletter-form" novalidate>
+              <label for="newsletter-email" class="sr-only">Email address</label>
+              <input type="email" id="newsletter-email" placeholder="Enter your email address" required
+                autocomplete="email">
+              <button type="submit" id="newsletter-submit">Subscribe Free</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logos/logo.png" alt="Needful Calculator" width="32" height="32" loading="lazy">
+            <span class="logo-text">Needful Calculator</span>
+          </a>
+          <p class="footer-desc">Smart Calculators & Useful Online Tools. Your trusted partner for fast, accurate, and
+            free online calculators. Built in India, trusted worldwide.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+            <a href="#" class="social-btn" aria-label="Instagram">◉</a>
+          </div>
+        </div>
+
+        <!-- Calculators -->
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <nav class="footer-links" aria-label="Calculator links">
+            <a href="calculator.html?tool=emi-calculator">EMI Calculator</a>
+            <a href="calculator.html?tool=sip-calculator">SIP Calculator</a>
+            <a href="calculator.html?tool=fd-calculator">FD Calculator</a>
+            <a href="calculator.html?tool=ppf-calculator">PPF Calculator</a>
+            <a href="calculator.html?tool=income-tax-calculator">Income Tax Calculator</a>
+            <a href="calculator.html?tool=gst-calculator">GST Calculator</a>
+          </nav>
+        </div>
+
+        <!-- Tools -->
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <nav class="footer-links" aria-label="Tool links">
+            <a href="calculator.html?tool=age-calculator">Age Calculator</a>
+            <a href="calculator.html?tool=bmi-calculator">BMI Calculator</a>
+            <a href="calculator.html?tool=length-converter">Unit Converter</a>
+            <a href="calculator.html?tool=date-difference">Date Calculator</a>
+            <a href="calculator.html?tool=word-counter">Word Counter</a>
+            <a href="calculator.html?tool=currency-converter">Currency Converter</a>
+          </nav>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <nav class="footer-links" aria-label="Company links">
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="sitemap.html">Sitemap</a>
+            <a href="contact.html">Advertise</a>
+            <a href="feedback.html">Feedback</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Ad Slot: Footer -->
+      <div class="ad-slot" aria-label="Advertisement" role="complementary" style="margin-bottom:var(--space-8)">
+        <span>Advertisement</span>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>© 2025 Needful Calculator. All rights reserved. Made with ❤️ in India.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── FAQ Schema ── -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are all calculators completely free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All 100+ calculators and tools on Needful Calculator are completely free to use, forever. No registration, no hidden fees, no subscription required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are the calculation results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All our calculators use verified mathematical formulas aligned with RBI guidelines, SEBI standards, and Income Tax department norms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my financial data stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All calculations run entirely in your browser using JavaScript. We do not collect, store, or transmit any of your financial inputs."
+      }
+    }
+  ]
+}
+</script>
+
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/animations.js" defer></script>
+</body>
+
+</html>

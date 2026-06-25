@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="has-sticky-header">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="description" content="Sitemap of Needful Calculator. Find all our free online calculators, tools, and resource pages in one organized place.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://needfulcalculator.com/sitemap.html">
+  <title>Sitemap | Needful Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .sitemap-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .sitemap-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sitemap-card h2 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: var(--space-2);
+      color: var(--txt-primary);
+    }
+
+    .sitemap-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .sitemap-link-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--txt-secondary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      background: var(--bg-muted);
+      transition: all var(--transition-fast);
+      border: 1px solid transparent;
+    }
+
+    .sitemap-link-item:hover {
+      color: var(--clr-primary);
+      background: var(--clr-primary-light);
+      border-color: rgba(37,99,235,0.15);
+      transform: translateY(-1px);
+    }
+
+    .sitemap-link-item svg {
+      color: var(--clr-primary);
+      opacity: 0.7;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://needfulcalculator.com" },
+      { "@type": "ListItem", "position": 2, "name": "Sitemap" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Needful Calculator Home">
+      <img src="assets/logos/logo.png" alt="Needful Calculator" width="36" height="36" loading="eager" onerror="this.style.display='none'">
+      <span class="logo-text">Needful Calculator</span>
+    </a>
+    <div class="header-search" role="search">
+      <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="search" id="header-search-input" placeholder="Search calculators..." aria-label="Search" autocomplete="off">
+      <div class="search-results" role="listbox" aria-label="Search suggestions"></div>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="category.html" class="nav-link">Calculators</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-links">
+    <a href="index.html">🏠 Home</a>
+    <a href="category.html">🧮 All Calculators</a>
+    <a href="blog.html">📰 Blog</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
+</nav>
+
+<main id="main-content">
+  <!-- Page Header -->
+  <div style="background:var(--gradient-hero);padding-block:var(--space-10);border-bottom:1px solid var(--border-color)">
+    <div class="container reveal">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" aria-current="page">Sitemap</span>
+      </nav>
+      <h1 style="font-size:clamp(1.75rem,4vw,2.75rem);margin-top:var(--space-4)">📄 Sitemap</h1>
+      <p style="color:var(--txt-secondary);margin-top:var(--space-2)">Find all pages and dynamic calculators in one organized index.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="sitemap-layout">
+        <!-- General Pages -->
+        <article class="sitemap-card reveal">
+          <h2>🌐 Main Website Pages</h2>
+          <div class="sitemap-links-grid">
+            <a href="index.html" class="sitemap-link-item">🏠 Home Page</a>
+            <a href="category.html" class="sitemap-link-item">🧮 All Calculators</a>
+            <a href="blog.html" class="sitemap-link-item">📰 Articles & Blog</a>
+            <a href="about.html" class="sitemap-link-item">ℹ️ About Us</a>
+            <a href="contact.html" class="sitemap-link-item">📞 Contact Us</a>
+            <a href="feedback.html" class="sitemap-link-item">💬 Send Feedback</a>
+            <a href="privacy-policy.html" class="sitemap-link-item">🔒 Privacy Policy</a>
+            <a href="terms.html" class="sitemap-link-item">⚖️ Terms of Use</a>
+            <a href="disclaimer.html" class="sitemap-link-item">⚠️ Disclaimer</a>
+          </div>
+        </article>
+
+        <!-- Finance & Insurance -->
+        <article class="sitemap-card reveal">
+          <h2>🏦 Finance & Insurance Calculators</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=emi-calculator" class="sitemap-link-item">EMI Calculator</a>
+            <a href="calculator.html?tool=sip-calculator" class="sitemap-link-item">SIP Calculator</a>
+            <a href="calculator.html?tool=fd-calculator" class="sitemap-link-item">FD Maturity Calculator</a>
+            <a href="calculator.html?tool=ppf-calculator" class="sitemap-link-item">PPF Calculator</a>
+            <a href="calculator.html?tool=compound-interest" class="sitemap-link-item">Compound Interest Calculator</a>
+            <a href="calculator.html?tool=lumpsum" class="sitemap-link-item">Lumpsum Return Calculator</a>
+            <a href="calculator.html?tool=goal-sip" class="sitemap-link-item">Goal SIP Planner</a>
+            <a href="calculator.html?tool=retirement-calculator" class="sitemap-link-item">Retirement Planner</a>
+            <a href="calculator.html?tool=swp" class="sitemap-link-item">SWP Calculator</a>
+            <a href="calculator.html?tool=nps" class="sitemap-link-item">NPS Calculator</a>
+            <a href="calculator.html?tool=cagr" class="sitemap-link-item">CAGR Calculator</a>
+            <a href="calculator.html?tool=inflation" class="sitemap-link-item">Inflation Calculator</a>
+            <a href="calculator.html?tool=life-insurance" class="sitemap-link-item">Life Insurance Planner</a>
+            <a href="calculator.html?tool=human-life-value" class="sitemap-link-item">Human Life Value (HLV)</a>
+            <a href="calculator.html?tool=term-insurance" class="sitemap-link-item">Term Insurance Calculator</a>
+            <a href="calculator.html?tool=risk-cover" class="sitemap-link-item">Risk Cover Calculator</a>
+            <a href="calculator.html?tool=family-protection" class="sitemap-link-item">Family Protection Planner</a>
+            <a href="calculator.html?tool=child-education" class="sitemap-link-item">Child Education Planner</a>
+            <a href="calculator.html?tool=retirement-corpus" class="sitemap-link-item">Retirement Corpus Planner</a>
+            <a href="calculator.html?tool=income-replacement" class="sitemap-link-item">Income Replacement Calculator</a>
+            <a href="calculator.html?tool=premium-affordability" class="sitemap-link-item">Premium Affordability</a>
+            <a href="calculator.html?tool=goal-protection" class="sitemap-link-item">Goal Protection Planner</a>
+          </div>
+        </article>
+
+        <!-- Tax Calculators -->
+        <article class="sitemap-card reveal">
+          <h2>💰 Tax Calculators</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=income-tax-calculator" class="sitemap-link-item">Income Tax Calculator</a>
+            <a href="calculator.html?tool=tds-calculator" class="sitemap-link-item">TDS Calculator</a>
+            <a href="calculator.html?tool=tax-saving-calculator" class="sitemap-link-item">Tax Saving Calculator</a>
+            <a href="calculator.html?tool=hra-calculator" class="sitemap-link-item">HRA Calculator</a>
+            <a href="calculator.html?tool=gratuity-calculator" class="sitemap-link-item">Gratuity Calculator</a>
+            <a href="calculator.html?tool=professional-tax-calculator" class="sitemap-link-item">Professional Tax Calculator</a>
+            <a href="calculator.html?tool=gst-calculator" class="sitemap-link-item">GST Calculator</a>
+            <a href="calculator.html?tool=reverse-gst-calculator" class="sitemap-link-item">Reverse GST Calculator</a>
+            <a href="calculator.html?tool=section-80c-calculator" class="sitemap-link-item">Section 80C Calculator</a>
+            <a href="calculator.html?tool=section-80d-calculator" class="sitemap-link-item">Section 80D Calculator</a>
+            <a href="calculator.html?tool=capital-gain-calculator" class="sitemap-link-item">Capital Gain Calculator</a>
+          </div>
+        </article>
+
+        <!-- Health & Wellness -->
+        <article class="sitemap-card reveal">
+          <h2>💚 Health & Wellness Calculators</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=bmi-calculator" class="sitemap-link-item">BMI Calculator</a>
+            <a href="calculator.html?tool=bmr-calculator" class="sitemap-link-item">BMR Calculator</a>
+            <a href="calculator.html?tool=tdee-calculator" class="sitemap-link-item">TDEE Calculator</a>
+            <a href="calculator.html?tool=body-fat-calculator" class="sitemap-link-item">Body Fat Calculator</a>
+            <a href="calculator.html?tool=lean-body-mass" class="sitemap-link-item">Lean Body Mass</a>
+            <a href="calculator.html?tool=ideal-weight" class="sitemap-link-item">Ideal Weight Calculator</a>
+            <a href="calculator.html?tool=weight-loss" class="sitemap-link-item">Weight Loss Calculator</a>
+            <a href="calculator.html?tool=weight-gain" class="sitemap-link-item">Weight Gain Calculator</a>
+            <a href="calculator.html?tool=calorie-calculator" class="sitemap-link-item">Calorie Calculator</a>
+            <a href="calculator.html?tool=water-intake" class="sitemap-link-item">Water Intake Calculator</a>
+            <a href="calculator.html?tool=protein-intake" class="sitemap-link-item">Protein Intake Calculator</a>
+            <a href="calculator.html?tool=macro-calculator" class="sitemap-link-item">Macro Calculator</a>
+            <a href="calculator.html?tool=meal-calorie-calculator" class="sitemap-link-item">Meal Calorie Calculator</a>
+            <a href="calculator.html?tool=heart-rate" class="sitemap-link-item">Heart Rate Calculator</a>
+            <a href="calculator.html?tool=target-heart-rate" class="sitemap-link-item">Target Heart Rate</a>
+            <a href="calculator.html?tool=blood-pressure" class="sitemap-link-item">Blood Pressure Calculator</a>
+            <a href="calculator.html?tool=blood-sugar-converter" class="sitemap-link-item">Blood Sugar Converter</a>
+            <a href="calculator.html?tool=sleep-calculator" class="sitemap-link-item">Sleep Duration Calculator</a>
+            <a href="calculator.html?tool=sleep-cycle" class="sitemap-link-item">Sleep Cycle Calculator</a>
+            <a href="calculator.html?tool=pregnancy-due-date" class="sitemap-link-item">Pregnancy Due Date</a>
+            <a href="calculator.html?tool=ovulation-calculator" class="sitemap-link-item">Ovulation Calculator</a>
+            <a href="calculator.html?tool=pregnancy-weight-gain" class="sitemap-link-item">Pregnancy Weight Gain</a>
+          </div>
+        </article>
+
+        <!-- Education & Writing -->
+        <article class="sitemap-card reveal">
+          <h2>📚 Education & Writing Tools</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=percentage-calculator" class="sitemap-link-item">Percentage Calculator</a>
+            <a href="calculator.html?tool=marks-percentage-calculator" class="sitemap-link-item">Marks Percentage</a>
+            <a href="calculator.html?tool=gpa-calculator" class="sitemap-link-item">GPA Calculator</a>
+            <a href="calculator.html?tool=cgpa-calculator" class="sitemap-link-item">CGPA Calculator</a>
+            <a href="calculator.html?tool=cgpa-to-percentage" class="sitemap-link-item">CGPA to Percentage</a>
+            <a href="calculator.html?tool=percentage-to-cgpa" class="sitemap-link-item">Percentage to CGPA</a>
+            <a href="calculator.html?tool=average-calculator" class="sitemap-link-item">Average Calculator</a>
+            <a href="calculator.html?tool=grade-calculator" class="sitemap-link-item">Grade Calculator</a>
+            <a href="calculator.html?tool=attendance-calculator" class="sitemap-link-item">Attendance Calculator</a>
+            <a href="calculator.html?tool=study-time-calculator" class="sitemap-link-item">Study Time Calculator</a>
+            <a href="calculator.html?tool=education-loan" class="sitemap-link-item">Education Loan Calculator</a>
+            <a href="calculator.html?tool=word-counter" class="sitemap-link-item">Word Counter</a>
+          </div>
+        </article>
+
+        <!-- Unit Converters -->
+        <article class="sitemap-card reveal">
+          <h2>🔁 Unit Converters</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=length-converter" class="sitemap-link-item">Length Converter</a>
+            <a href="calculator.html?tool=distance-converter" class="sitemap-link-item">Distance Converter</a>
+            <a href="calculator.html?tool=height-converter" class="sitemap-link-item">Height Converter</a>
+            <a href="calculator.html?tool=weight-converter" class="sitemap-link-item">Weight Converter</a>
+            <a href="calculator.html?tool=mass-converter" class="sitemap-link-item">Mass Converter</a>
+            <a href="calculator.html?tool=temperature-converter" class="sitemap-link-item">Temperature Converter</a>
+            <a href="calculator.html?tool=area-converter" class="sitemap-link-item">Area Converter</a>
+            <a href="calculator.html?tool=volume-converter" class="sitemap-link-item">Volume Converter</a>
+            <a href="calculator.html?tool=energy-converter" class="sitemap-link-item">Energy Converter</a>
+            <a href="calculator.html?tool=power-converter" class="sitemap-link-item">Power Converter</a>
+            <a href="calculator.html?tool=fuel-consumption-converter" class="sitemap-link-item">Fuel Consumption</a>
+            <a href="calculator.html?tool=liquid-volume-converter" class="sitemap-link-item">Liquid Volume Converter</a>
+            <a href="calculator.html?tool=speed-converter" class="sitemap-link-item">Speed Converter</a>
+            <a href="calculator.html?tool=data-storage-converter" class="sitemap-link-item">Data Storage Converter</a>
+            <a href="calculator.html?tool=internet-speed-converter" class="sitemap-link-item">Internet Speed Converter</a>
+            <a href="calculator.html?tool=time-converter" class="sitemap-link-item">Time Converter</a>
+            <a href="calculator.html?tool=pressure-converter" class="sitemap-link-item">Pressure Converter</a>
+            <a href="calculator.html?tool=force-converter" class="sitemap-link-item">Force Converter</a>
+            <a href="calculator.html?tool=angle-converter" class="sitemap-link-item">Angle Converter</a>
+            <a href="calculator.html?tool=frequency-converter" class="sitemap-link-item">Frequency Converter</a>
+            <a href="calculator.html?tool=currency-converter" class="sitemap-link-item">Currency Converter</a>
+          </div>
+        </article>
+
+        <!-- Date & Time -->
+        <article class="sitemap-card reveal">
+          <h2>📅 Date & Time Tools</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=age-calculator" class="sitemap-link-item">Age Calculator</a>
+            <a href="calculator.html?tool=age-difference" class="sitemap-link-item">Age Difference</a>
+            <a href="calculator.html?tool=birthday-calculator" class="sitemap-link-item">Birthday Calculator</a>
+            <a href="calculator.html?tool=next-birthday" class="sitemap-link-item">Next Birthday Calculator</a>
+            <a href="calculator.html?tool=date-difference" class="sitemap-link-item">Date Difference</a>
+            <a href="calculator.html?tool=days-between-dates" class="sitemap-link-item">Days Between Dates</a>
+            <a href="calculator.html?tool=time-duration" class="sitemap-link-item">Time Duration Calculator</a>
+            <a href="calculator.html?tool=time-zone-converter" class="sitemap-link-item">Time Zone Converter</a>
+            <a href="calculator.html?tool=working-days" class="sitemap-link-item">Working Days Calculator</a>
+            <a href="calculator.html?tool=business-days" class="sitemap-link-item">Business Days Calculator</a>
+            <a href="calculator.html?tool=countdown-calculator" class="sitemap-link-item">Countdown Calculator</a>
+            <a href="calculator.html?tool=event-countdown" class="sitemap-link-item">Event Countdown</a>
+            <a href="calculator.html?tool=day-of-week" class="sitemap-link-item">Day of Week Calculator</a>
+          </div>
+        </article>
+
+        <!-- PDF Tools -->
+        <article class="sitemap-card reveal">
+          <h2>📄 PDF Tools</h2>
+          <div class="sitemap-links-grid">
+            <a href="calculator.html?tool=pdf-merge" class="sitemap-link-item">PDF Merge</a>
+            <a href="calculator.html?tool=pdf-split" class="sitemap-link-item">PDF Split</a>
+            <a href="calculator.html?tool=jpg-to-pdf" class="sitemap-link-item">JPG to PDF</a>
+            <a href="calculator.html?tool=pdf-to-jpg" class="sitemap-link-item">PDF to JPG</a>
+            <a href="calculator.html?tool=pdf-rotate" class="sitemap-link-item">PDF Rotate</a>
+            <a href="calculator.html?tool=pdf-delete-pages" class="sitemap-link-item">PDF Delete Pages</a>
+            <a href="calculator.html?tool=pdf-extract-pages" class="sitemap-link-item">PDF Extract Pages</a>
+            <a href="calculator.html?tool=pdf-metadata-viewer" class="sitemap-link-item">PDF Metadata Viewer</a>
+            <a href="calculator.html?tool=image-to-pdf" class="sitemap-link-item">Image to PDF</a>
+            <a href="calculator.html?tool=pdf-preview" class="sitemap-link-item">PDF Preview</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="assets/logos/logo.png" alt="Needful Calculator" width="32" height="32" loading="lazy" onerror="this.style.display='none'">
+          <span class="logo-text">Needful Calculator</span>
+        </a>
+        <p class="footer-desc">Smart Calculators & Useful Online Tools. Your trusted partner for fast, accurate, and free online calculators. Built in India, trusted worldwide.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn" aria-label="Instagram">◉</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <nav class="footer-links" aria-label="Calculator links">
+          <a href="calculator.html?tool=emi-calculator">EMI Calculator</a>
+          <a href="calculator.html?tool=sip-calculator">SIP Calculator</a>
+          <a href="calculator.html?tool=fd-calculator">FD Calculator</a>
+          <a href="calculator.html?tool=ppf-calculator">PPF Calculator</a>
+          <a href="calculator.html?tool=income-tax-calculator">Income Tax Calculator</a>
+          <a href="calculator.html?tool=gst-calculator">GST Calculator</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <nav class="footer-links" aria-label="Tool links">
+          <a href="calculator.html?tool=age-calculator">Age Calculator</a>
+          <a href="calculator.html?tool=bmi-calculator">BMI Calculator</a>
+          <a href="calculator.html?tool=length-converter">Unit Converter</a>
+          <a href="calculator.html?tool=date-difference">Date Calculator</a>
+          <a href="calculator.html?tool=word-counter">Word Counter</a>
+          <a href="calculator.html?tool=currency-converter">Currency Converter</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <nav class="footer-links" aria-label="Company links">
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <a href="sitemap.html">Sitemap</a>
+          <a href="contact.html">Advertise</a>
+          <a href="feedback.html">Feedback</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="ad-slot" aria-label="Advertisement" role="complementary" style="margin-bottom:var(--space-8)">
+      <span>Advertisement</span>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Needful Calculator. All rights reserved. Made with ❤️ in India.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/calculator.js" defer></script>
+<script src="js/search.js" defer></script>
+<script src="js/animations.js" defer></script>
+</body>
+</html>
