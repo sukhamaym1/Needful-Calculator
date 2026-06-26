@@ -10,8 +10,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     icon: '🏦',
     subtitle: 'Calculate monthly loan instalment instantly',
     inputs: [
-      { id: 'principal', label: 'Loan Amount', type: 'range', min: 100000, max: 10000000, step: 100000, default: 2000000, format: 'currency' },
-      { id: 'rate', label: 'Annual Interest Rate', type: 'range', min: 1, max: 24, step: 0.1, default: 8.5, format: 'percent' },
+      { id: 'principal', label: 'Loan Amount', type: 'range', min: 1000, max: 10000000, step: 1000, default: 2000000, format: 'currency' },
+      { id: 'rate', label: 'Annual Interest Rate', type: 'range', min: 0.1, max: 24, step: 0.1, default: 8.5, format: 'percent' },
       { id: 'tenure', label: 'Loan Tenure', type: 'range', min: 1, max: 30, step: 1, default: 20, format: 'years' }
     ],
     hasChart: true,
@@ -91,7 +91,7 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     subtitle: 'Plan mutual fund SIP investments and compound wealth',
     inputs: [
       { id: 'monthly', label: 'Monthly Investment', type: 'range', min: 500, max: 1000000, step: 500, default: 5000, format: 'currency' },
-      { id: 'rate', label: 'Expected Return Rate (p.a.)', type: 'range', min: 1, max: 30, step: 0.5, default: 12, format: 'percent' },
+      { id: 'rate', label: 'Expected Return Rate (p.a.)', type: 'range', min: 0.1, max: 30, step: 0.5, default: 12, format: 'percent' },
       { id: 'tenure', label: 'Time Period', type: 'range', min: 1, max: 40, step: 1, default: 10, format: 'years' }
     ],
     hasChart: true,
@@ -151,7 +151,7 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     subtitle: 'Calculate Fixed Deposit maturity amount and interest earned',
     inputs: [
       { id: 'principal', label: 'Total Investment', type: 'range', min: 1000, max: 10000000, step: 1000, default: 100000, format: 'currency' },
-      { id: 'rate', label: 'Rate of Interest (p.a.)', type: 'range', min: 1, max: 20, step: 0.1, default: 6.5, format: 'percent' },
+      { id: 'rate', label: 'Rate of Interest (p.a.)', type: 'range', min: 0.1, max: 20, step: 0.1, default: 6.5, format: 'percent' },
       { id: 'tenure', label: 'Tenure (Years)', type: 'range', min: 1, max: 25, step: 1, default: 5, format: 'years' },
       {
         id: 'compounding',
@@ -218,8 +218,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     subtitle: 'Calculate Public Provident Fund maturity with 7.1% interest',
     inputs: [
       { id: 'annual', label: 'Yearly Investment', type: 'range', min: 500, max: 150000, step: 500, default: 50000, format: 'currency' },
-      { id: 'tenure', label: 'Tenure (Years)', type: 'range', min: 15, max: 50, step: 5, default: 15, format: 'years' },
-      { id: 'rate', label: 'PPF Interest Rate (%)', type: 'number', default: 7.1, readonly: true }
+      { id: 'tenure', label: 'Tenure (Years)', type: 'range', min: 1, max: 50, step: 1, default: 15, format: 'years' },
+      { id: 'rate', label: 'PPF Interest Rate (%)', type: 'number', default: 7.1, min: 0.1 }
     ],
     hasChart: true,
     hasTable: true,
@@ -434,7 +434,7 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     inputs: [
       { id: 'income', label: 'Gross Monthly Income (₹)', type: 'range', min: 10000, max: 1000000, step: 5000, default: 100000, format: 'currency' },
       { id: 'emis', label: 'Existing Monthly EMIs (₹)', type: 'range', min: 0, max: 500000, step: 2000, default: 15000, format: 'currency' },
-      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 5, max: 20, step: 0.1, default: 9.0, format: 'percent' },
+      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 0.1, max: 20, step: 0.1, default: 9.0, format: 'percent' },
       { id: 'tenure', label: 'Loan Tenure (Years)', type: 'range', min: 1, max: 30, step: 1, default: 20, format: 'years' },
       { id: 'foir', label: 'Max FOIR (%)', type: 'range', min: 10, max: 100, step: 5, default: 50, format: 'percent' }
     ],
@@ -502,8 +502,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     icon: '🏠',
     subtitle: 'Calculate monthly EMI and total interest for home loans',
     inputs: [
-      { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 100000, max: 50000000, step: 100000, default: 5000000, format: 'currency' },
-      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 5, max: 20, step: 0.1, default: 8.5, format: 'percent' },
+      { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 1000, max: 50000000, step: 1000, default: 5000000, format: 'currency' },
+      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 0.1, max: 20, step: 0.1, default: 8.5, format: 'percent' },
       { id: 'tenure', label: 'Loan Tenure (Years)', type: 'range', min: 1, max: 30, step: 1, default: 20, format: 'years' }
     ],
     hasChart: true,
@@ -518,8 +518,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     icon: '🚗',
     subtitle: 'Calculate monthly EMI and total interest for auto loans',
     inputs: [
-      { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 100000, max: 10000000, step: 50000, default: 800000, format: 'currency' },
-      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 5, max: 25, step: 0.1, default: 9.5, format: 'percent' },
+      { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 1000, max: 10000000, step: 1000, default: 800000, format: 'currency' },
+      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 0.1, max: 25, step: 0.1, default: 9.5, format: 'percent' },
       { id: 'tenure', label: 'Loan Tenure (Years)', type: 'range', min: 1, max: 7, step: 1, default: 5, format: 'years' }
     ],
     hasChart: true,
@@ -534,8 +534,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     icon: '💳',
     subtitle: 'Calculate monthly EMI and total interest for personal loans',
     inputs: [
-      { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 10000, max: 5000000, step: 10000, default: 500000, format: 'currency' },
-      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 5, max: 35, step: 0.1, default: 12.5, format: 'percent' },
+      { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 1000, max: 5000000, step: 1000, default: 500000, format: 'currency' },
+      { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 0.1, max: 35, step: 0.1, default: 12.5, format: 'percent' },
       { id: 'tenure', label: 'Loan Tenure (Years)', type: 'range', min: 1, max: 5, step: 1, default: 3, format: 'years' }
     ],
     hasChart: true,
@@ -600,7 +600,7 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     subtitle: 'Calculate monthly SIP investment needed to reach a target goal',
     inputs: [
       { id: 'goal', label: 'Target Goal Amount (₹)', type: 'range', min: 10000, max: 100000000, step: 50000, default: 10000000, format: 'currency' },
-      { id: 'rate', label: 'Expected Return Rate (% p.a.)', type: 'range', min: 1, max: 30, step: 0.5, default: 12.0, format: 'percent' },
+      { id: 'rate', label: 'Expected Return Rate (% p.a.)', type: 'range', min: 0.1, max: 30, step: 0.5, default: 12.0, format: 'percent' },
       { id: 'tenure', label: 'Time Period (Years)', type: 'range', min: 1, max: 40, step: 1, default: 10, format: 'years' }
     ],
     hasChart: true,
@@ -665,8 +665,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
       { id: 'lifeExp', label: 'Life Expectancy', type: 'range', min: 60, max: 100, step: 1, default: 85, format: 'years' },
       { id: 'expenses', label: 'Monthly Expenses (Current) (₹)', type: 'range', min: 5000, max: 500000, step: 5000, default: 50000, format: 'currency' },
       { id: 'inflation', label: 'Expected Inflation Rate (%)', type: 'range', min: 0, max: 15, step: 0.5, default: 6, format: 'percent' },
-      { id: 'preRate', label: 'Pre-Retirement Returns Rate (%)', type: 'range', min: 1, max: 25, step: 0.5, default: 12, format: 'percent' },
-      { id: 'postRate', label: 'Post-Retirement Returns Rate (%)', type: 'range', min: 1, max: 25, step: 0.5, default: 8, format: 'percent' }
+      { id: 'preRate', label: 'Pre-Retirement Returns Rate (%)', type: 'range', min: 0.1, max: 25, step: 0.5, default: 12, format: 'percent' },
+      { id: 'postRate', label: 'Post-Retirement Returns Rate (%)', type: 'range', min: 0.1, max: 25, step: 0.5, default: 8, format: 'percent' }
     ],
     hasChart: true,
     hasTable: true,
@@ -750,7 +750,7 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     inputs: [
       { id: 'principal', label: 'Initial Investment (₹)', type: 'range', min: 10000, max: 50000000, step: 50000, default: 1000000, format: 'currency' },
       { id: 'withdrawal', label: 'Monthly Withdrawal (₹)', type: 'range', min: 500, max: 500000, step: 500, default: 10000, format: 'currency' },
-      { id: 'rate', label: 'Expected Return Rate (% p.a.)', type: 'range', min: 1, max: 30, step: 0.5, default: 10.0, format: 'percent' },
+      { id: 'rate', label: 'Expected Return Rate (% p.a.)', type: 'range', min: 0.1, max: 30, step: 0.5, default: 10.0, format: 'percent' },
       { id: 'tenure', label: 'Time Period (Years)', type: 'range', min: 1, max: 40, step: 1, default: 10, format: 'years' }
     ],
     hasChart: true,
@@ -811,10 +811,10 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     subtitle: 'Calculate NPS corpus, lumpsum cashout, and monthly pension',
     inputs: [
       { id: 'monthly', label: 'Monthly Contribution (₹)', type: 'range', min: 500, max: 150000, step: 500, default: 10000, format: 'currency' },
-      { id: 'rate', label: 'Expected Return Rate (% p.a.)', type: 'range', min: 5, max: 15, step: 0.5, default: 10.0, format: 'percent' },
+      { id: 'rate', label: 'Expected Return Rate (% p.a.)', type: 'range', min: 0.1, max: 15, step: 0.5, default: 10.0, format: 'percent' },
       { id: 'age', label: 'Current Age (Years)', type: 'range', min: 18, max: 60, step: 1, default: 30, format: 'years' },
       { id: 'annuityPct', label: 'Annuity Purchase (%)', type: 'range', min: 40, max: 100, step: 5, default: 40, format: 'percent' },
-      { id: 'annuityRate', label: 'Expected Annuity Rate (% p.a.)', type: 'range', min: 3, max: 15, step: 0.5, default: 6.0, format: 'percent' }
+      { id: 'annuityRate', label: 'Expected Annuity Rate (% p.a.)', type: 'range', min: 0.1, max: 15, step: 0.5, default: 6.0, format: 'percent' }
     ],
     hasChart: true,
     hasTable: true,
@@ -937,7 +937,7 @@ Object.assign(window.NC.CalculatorRouter.configs, {
     subtitle: 'Calculate future purchasing power or cost adjusted for inflation',
     inputs: [
       { id: 'amount', label: 'Principal Amount (₹)', type: 'range', min: 100, max: 10000000, step: 500, default: 50000, format: 'currency' },
-      { id: 'rate', label: 'Inflation Rate (% p.a.)', type: 'range', min: 1, max: 20, step: 0.5, default: 6.0, format: 'percent' },
+      { id: 'rate', label: 'Inflation Rate (% p.a.)', type: 'range', min: 0.1, max: 20, step: 0.5, default: 6.0, format: 'percent' },
       { id: 'tenure', label: 'Time Period (Years)', type: 'range', min: 1, max: 40, step: 1, default: 10, format: 'years' },
       {
         id: 'mode',

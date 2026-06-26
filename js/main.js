@@ -758,7 +758,17 @@ const ScrollSpy = (() => {
       if (window.innerWidth >= 992) return;
       const chip = document.querySelector(`.cat-sidebar-item[href="#${id}"]`);
       if (chip) {
-        chip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const container = chip.parentElement;
+        if (container) {
+          const containerWidth = container.offsetWidth;
+          const chipOffsetLeft = chip.offsetLeft;
+          const chipWidth = chip.offsetWidth;
+          const leftOffset = chipOffsetLeft - container.offsetLeft;
+          container.scrollTo({
+            left: leftOffset - (containerWidth / 2) + (chipWidth / 2),
+            behavior: 'smooth'
+          });
+        }
       }
     };
 

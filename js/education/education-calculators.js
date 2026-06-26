@@ -51,8 +51,8 @@ Object.assign(window.NC.CalculatorRouter.configs, {
       icon: '🎓',
       subtitle: 'Calculate EMI after course and grace (moratorium) periods',
       inputs: [
-        { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 50000, max: 15000000, step: 50000, default: 1000000, format: 'currency' },
-        { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 5, max: 20, step: 0.1, default: 10.0, format: 'percent' },
+        { id: 'principal', label: 'Loan Amount (₹)', type: 'range', min: 1000, max: 15000000, step: 1000, default: 1000000, format: 'currency' },
+        { id: 'rate', label: 'Interest Rate (% p.a.)', type: 'range', min: 0.1, max: 20, step: 0.1, default: 10.0, format: 'percent' },
         { id: 'tenure', label: 'Repayment Tenure (Years)', type: 'range', min: 1, max: 15, step: 1, default: 5, format: 'years' },
         { id: 'moratorium', label: 'Moratorium Period (Years)', type: 'range', min: 0, max: 7, step: 0.5, default: 2, format: 'years' }
       ],

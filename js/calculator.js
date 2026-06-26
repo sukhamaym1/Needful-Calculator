@@ -230,35 +230,79 @@ const CalculatorRouter = {
       this.state[input.id] = defaultVal;
 
       if (input.type === 'range') {
-        const formatted = this.formatValue(defaultVal, input.format);
-        group.innerHTML = `
-          <label class="form-label" for="${input.id}-input">
-            <span>${input.label}</span>
-            <span class="form-value" id="${input.id}-display">${formatted}</span>
-          </label>
-          <input
-            class="form-input"
-            type="number"
-            id="${input.id}-input"
-            min="${input.min}"
-            max="${input.max}"
-            step="${input.step}"
-            value="${defaultVal}"
-          >
-          <input
-            class="range-slider"
-            type="range"
-            id="${input.id}-slider"
-            min="${input.min}"
-            max="${input.max}"
-            step="${input.step}"
-            value="${defaultVal}"
-          >
-          <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--txt-muted);margin-top:4px">
-            <span>${this.formatValue(input.min, input.format)}</span>
-            <span>${this.formatValue(input.max, input.format)}</span>
-          </div>
-        `;
+        const isTenureEnhanced = ['emi-calculator', 'home-loan', 'personal-loan', 'car-loan', 'education-loan', 'loan-eligibility', 'sip-calculator', 'fd-calculator', 'ppf-calculator', 'swp', 'nps', 'goal-sip', 'retirement'].includes(this.activeTool) && input.id === 'tenure';
+
+        if (isTenureEnhanced) {
+          group.innerHTML = `
+            <label class="form-label" for="${input.id}-input">
+              <span>${input.label}</span>
+              <span class="form-value" id="${input.id}-display">${defaultVal} Years</span>
+            </label>
+            <div style="display:flex; gap: var(--space-2); align-items: center; width: 100%;">
+              <input
+                class="form-input"
+                type="number"
+                id="${input.id}-input"
+                min="1"
+                max="50"
+                step="1"
+                value="${defaultVal}"
+                style="flex: 1;"
+              >
+              <select
+                class="form-input"
+                id="${input.id}-unit"
+                style="width: 120px; background:var(--bg-muted); color:var(--txt-primary); border-radius:var(--radius-lg); outline:none; border:1.5px solid var(--border-color); height:46px; padding:0 var(--space-2); font-size:var(--text-base); cursor: pointer;"
+              >
+                <option value="years" selected>Years</option>
+                <option value="months">Months</option>
+              </select>
+            </div>
+            <input
+              class="range-slider"
+              type="range"
+              id="${input.id}-slider"
+              min="1"
+              max="50"
+              step="1"
+              value="${defaultVal}"
+            >
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--txt-muted);margin-top:4px">
+              <span id="${input.id}-min-label">1 Year</span>
+              <span id="${input.id}-max-label">50 Years</span>
+            </div>
+          `;
+        } else {
+          const formatted = this.formatValue(defaultVal, input.format);
+          group.innerHTML = `
+            <label class="form-label" for="${input.id}-input">
+              <span>${input.label}</span>
+              <span class="form-value" id="${input.id}-display">${formatted}</span>
+            </label>
+            <input
+              class="form-input"
+              type="number"
+              id="${input.id}-input"
+              min="${input.min}"
+              max="${input.max}"
+              step="${input.step}"
+              value="${defaultVal}"
+            >
+            <input
+              class="range-slider"
+              type="range"
+              id="${input.id}-slider"
+              min="${input.min}"
+              max="${input.max}"
+              step="${input.step}"
+              value="${defaultVal}"
+            >
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--txt-muted);margin-top:4px">
+              <span>${this.formatValue(input.min, input.format)}</span>
+              <span>${this.formatValue(input.max, input.format)}</span>
+            </div>
+          `;
+        }
       } else if (input.type === 'select') {
         const optionsHtml = input.options.map(o => `
           <option value="${o.value}" ${o.value == defaultVal ? 'selected' : ''}>${o.label}</option>
@@ -297,7 +341,6 @@ const CalculatorRouter = {
             type="${input.type}"
             id="${input.id}-input"
             value="${defaultVal}"
-            ${input.readonly ? 'readonly' : ''}
           >
         `;
       }
@@ -473,38 +516,141 @@ const CalculatorRouter = {
     config.inputs.forEach(input => {
       const inputEl = document.getElementById(`${input.id}-input`);
       const sliderEl = document.getElementById(`${input.id}-slider`);
+      const unitEl = document.getElementById(`${input.id}-unit`);
 
-      const updateVal = (value) => {
-        let valNum = parseFloat(value);
-        if (input.type === 'number' || input.type === 'range') {
-          if (input.type === 'range') {
-            valNum = Math.min(input.max, Math.max(input.min, valNum || input.min));
-          }
-          this.state[input.id] = valNum;
-          if (inputEl) inputEl.value = valNum;
-          if (sliderEl) {
-            sliderEl.value = valNum;
-            this.updateSliderFill(sliderEl);
-          }
-          
-          const displayEl = document.getElementById(`${input.id}-display`);
-          if (displayEl) {
+      const isTenureEnhanced = ['emi-calculator', 'home-loan', 'personal-loan', 'car-loan', 'education-loan', 'loan-eligibility', 'sip-calculator', 'fd-calculator', 'ppf-calculator', 'swp', 'nps', 'goal-sip', 'retirement'].includes(this.activeTool) && input.id === 'tenure';
+
+      const updateDisplayAndSlider = (valNum) => {
+        if (sliderEl && !isNaN(valNum)) {
+          sliderEl.value = valNum;
+          this.updateSliderFill(sliderEl);
+        }
+        const displayEl = document.getElementById(`${input.id}-display`);
+        if (displayEl) {
+          if (isTenureEnhanced && unitEl) {
+            const unit = unitEl.value;
+            displayEl.textContent = valNum + ' ' + (unit === 'years' ? (valNum === 1 ? 'Year' : 'Years') : (valNum === 1 ? 'Month' : 'Months'));
+          } else {
             displayEl.textContent = this.formatValue(valNum, input.format);
           }
-        } else {
-          this.state[input.id] = value;
         }
-
-        this.runCalculation(config);
       };
 
-      if (inputEl) {
-        inputEl.addEventListener('input', e => updateVal(e.target.value));
-        inputEl.addEventListener('blur', e => updateVal(e.target.value));
-      }
-      if (sliderEl) {
-        sliderEl.addEventListener('input', e => updateVal(e.target.value));
-        this.updateSliderFill(sliderEl);
+      if (isTenureEnhanced && unitEl) {
+        const handleInputChange = (valStr) => {
+          let valNum = parseFloat(valStr);
+          this.state[input.id] = isNaN(valNum) ? valStr : valNum;
+          
+          if (!isNaN(valNum)) {
+            const minLimit = 1;
+            const maxLimit = unitEl.value === 'years' ? 50 : 600;
+            const clampedVal = Math.min(maxLimit, Math.max(minLimit, valNum));
+            if (sliderEl) {
+              sliderEl.value = clampedVal;
+              this.updateSliderFill(sliderEl);
+            }
+            updateDisplayAndSlider(valNum);
+          }
+          this.runCalculation(config);
+        };
+
+        const handleSliderChange = (valStr) => {
+          const valNum = parseFloat(valStr);
+          this.state[input.id] = valNum;
+          if (inputEl) {
+            inputEl.value = valNum;
+          }
+          updateDisplayAndSlider(valNum);
+          this.runCalculation(config);
+        };
+
+        const handleUnitChange = () => {
+          const unit = unitEl.value;
+          let currentVal = parseFloat(inputEl.value) || 0;
+          let minVal, maxVal, stepVal;
+          
+          if (unit === 'years') {
+            minVal = 1;
+            maxVal = 50;
+            stepVal = 1;
+            currentVal = Math.round((currentVal / 12) * 10) / 10;
+            if (currentVal < 1) currentVal = 1;
+            if (currentVal > 50) currentVal = 50;
+          } else {
+            minVal = 1;
+            maxVal = 600;
+            stepVal = 1;
+            currentVal = Math.round(currentVal * 12);
+            if (currentVal < 1) currentVal = 1;
+            if (currentVal > 600) currentVal = 600;
+          }
+
+          inputEl.min = minVal;
+          inputEl.max = maxVal;
+          inputEl.step = stepVal;
+          inputEl.value = currentVal;
+
+          if (sliderEl) {
+            sliderEl.min = minVal;
+            sliderEl.max = maxVal;
+            sliderEl.step = stepVal;
+            sliderEl.value = currentVal;
+            this.updateSliderFill(sliderEl);
+          }
+
+          const minLabel = document.getElementById(`${input.id}-min-label`);
+          const maxLabel = document.getElementById(`${input.id}-max-label`);
+          if (minLabel) minLabel.textContent = minVal + ' ' + (unit === 'years' ? 'Year' : 'Month');
+          if (maxLabel) maxLabel.textContent = maxVal + ' ' + (unit === 'years' ? 'Years' : 'Months');
+
+          this.state[input.id] = currentVal;
+          updateDisplayAndSlider(currentVal);
+          this.runCalculation(config);
+        };
+
+        if (inputEl) {
+          inputEl.addEventListener('input', e => handleInputChange(e.target.value));
+        }
+        if (sliderEl) {
+          sliderEl.addEventListener('input', e => handleSliderChange(e.target.value));
+          this.updateSliderFill(sliderEl);
+        }
+        unitEl.addEventListener('change', handleUnitChange);
+
+      } else {
+        const handleInputChange = (valStr) => {
+          let valNum = parseFloat(valStr);
+          this.state[input.id] = isNaN(valNum) ? valStr : valNum;
+          
+          if (input.type === 'number' || input.type === 'range') {
+            if (!isNaN(valNum)) {
+              if (sliderEl) {
+                sliderEl.value = Math.min(input.max, Math.max(input.min, valNum));
+                this.updateSliderFill(sliderEl);
+              }
+              updateDisplayAndSlider(valNum);
+            }
+          }
+          this.runCalculation(config);
+        };
+
+        const handleSliderChange = (valStr) => {
+          const valNum = parseFloat(valStr);
+          this.state[input.id] = valNum;
+          if (inputEl) {
+            inputEl.value = valNum;
+          }
+          updateDisplayAndSlider(valNum);
+          this.runCalculation(config);
+        };
+
+        if (inputEl) {
+          inputEl.addEventListener('input', e => handleInputChange(e.target.value));
+        }
+        if (sliderEl) {
+          sliderEl.addEventListener('input', e => handleSliderChange(e.target.value));
+          this.updateSliderFill(sliderEl);
+        }
       }
     });
   },
@@ -521,20 +667,37 @@ const CalculatorRouter = {
     
     if (config.isPDFPlaceholder) return;
 
+    const isTenureEnhanced = ['emi-calculator', 'home-loan', 'personal-loan', 'car-loan', 'education-loan', 'loan-eligibility', 'sip-calculator', 'fd-calculator', 'ppf-calculator', 'swp', 'nps', 'goal-sip', 'retirement'].includes(this.activeTool);
+
     for (const input of config.inputs) {
       const val = this.state[input.id];
       if (input.type === 'number' || input.type === 'range') {
-        if (isNaN(val) || val === undefined || val === null) {
+        if (val === '' || val === undefined || val === null || isNaN(val)) {
           this.showError(`Please enter a valid number for ${input.label}`);
           return;
         }
-        if (input.min !== undefined && val < input.min) {
-          this.showError(`${input.label} must be at least ${this.formatValue(input.min, input.format)}`);
-          return;
-        }
-        if (input.max !== undefined && val > input.max) {
-          this.showError(`${input.label} cannot exceed ${this.formatValue(input.max, input.format)}`);
-          return;
+
+        if (isTenureEnhanced && input.id === 'tenure') {
+          const unitEl = document.getElementById('tenure-unit');
+          const unit = unitEl ? unitEl.value : 'years';
+          const maxLimit = unit === 'years' ? 50 : 600;
+          if (val < 1) {
+            this.showError(`${input.label} must be at least 1 ${unit === 'years' ? 'Year' : 'Month'}`);
+            return;
+          }
+          if (val > maxLimit) {
+            this.showError(`${input.label} cannot exceed ${maxLimit} ${unit === 'years' ? 'Years' : 'Months'}`);
+            return;
+          }
+        } else {
+          if (input.min !== undefined && val < input.min) {
+            this.showError(`${input.label} must be at least ${this.formatValue(input.min, input.format)}`);
+            return;
+          }
+          if (input.max !== undefined && val > input.max) {
+            this.showError(`${input.label} cannot exceed ${this.formatValue(input.max, input.format)}`);
+            return;
+          }
         }
       }
     }
@@ -544,7 +707,16 @@ const CalculatorRouter = {
       errorEl.style.display = 'none';
     }
 
-    const calcResult = config.calculate(this.state);
+    const calcState = { ...this.state };
+    if (isTenureEnhanced && this.state.tenure !== undefined) {
+      const unitEl = document.getElementById('tenure-unit');
+      const unit = unitEl ? unitEl.value : 'years';
+      if (unit === 'months') {
+        calcState.tenure = this.state.tenure / 12;
+      }
+    }
+
+    const calcResult = config.calculate(calcState);
     
     if (calcResult.error) {
       this.showError(calcResult.error);
