@@ -22,10 +22,14 @@
   <link rel="stylesheet" href="css/responsive.css">
 
   <style>
-    /* About page specific */
+    /* ─── Modern Bento & Glassmorphism 2026 Styles ─── */
+    .about-section {
+      padding-block: var(--space-16);
+    }
+    
     .about-hero {
       background: var(--gradient-hero);
-      padding-block: var(--space-20) var(--space-16);
+      padding-block: var(--space-20) var(--space-12);
       position: relative;
       overflow: hidden;
     }
@@ -43,9 +47,16 @@
 
     .about-hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.25fr 0.75fr;
       gap: var(--space-12);
       align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .about-hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
     }
 
     .about-eyebrow {
@@ -64,9 +75,11 @@
     }
 
     .about-hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
       line-height: 1.1;
       margin-bottom: var(--space-5);
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .about-hero p {
@@ -76,25 +89,97 @@
       margin-bottom: var(--space-6);
     }
 
-    /* Stats band */
-    .stats-band {
+    /* Bento Grid Base */
+    .bento-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       gap: var(--space-6);
-      background: var(--bg-surface);
+    }
+
+    @media (max-width: 768px) {
+      .bento-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+    }
+
+    .col-span-12 { grid-column: span 12; }
+    .col-span-8 { grid-column: span 8; }
+    .col-span-6 { grid-column: span 6; }
+    .col-span-4 { grid-column: span 4; }
+    .col-span-3 { grid-column: span 3; }
+
+    /* Glassmorphic Bento Card */
+    .bento-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-2xl);
       padding: var(--space-8);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
+      border-color: rgba(37, 99, 235, 0.25);
+    }
+
+    .bento-card-header {
+      margin-bottom: var(--space-4);
+    }
+
+    .bento-card-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--txt-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .bento-card-text {
+      font-size: var(--text-sm);
+      color: var(--txt-muted);
+      line-height: 1.6;
+    }
+
+    /* Special card accents */
+    .card-accent-brand {
+      background: var(--gradient-brand);
+      color: white;
+      border: none;
+    }
+    .card-accent-brand .bento-card-title,
+    .card-accent-brand .bento-card-text {
+      color: white;
+    }
+    .card-accent-brand .bento-card-text {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Stats Bento Cards */
+    .stats-bento {
       margin-top: var(--space-12);
     }
 
-    .stat-item {
+    .stat-card {
       text-align: center;
-      padding: var(--space-4);
+      padding: var(--space-6) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .stat-num {
+    .stat-card .stat-num {
       font-family: var(--font-heading);
       font-size: var(--text-4xl);
       font-weight: 800;
@@ -103,202 +188,139 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       display: block;
-    }
-
-    .stat-label {
-      font-size: var(--text-sm);
-      color: var(--txt-muted);
-      font-weight: 500;
-      margin-top: var(--space-1);
-    }
-
-    /* Mission section */
-    .mission-card {
-      background: var(--gradient-brand);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-12);
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mission-card::before {
-      content: '';
-      position: absolute;
-      top: -20%;
-      left: -10%;
-      width: 300px;
-      height: 300px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
-    }
-
-    .mission-card h2 {
-      color: white;
-      font-size: var(--text-3xl);
-      margin-bottom: var(--space-4);
-    }
-
-    .mission-card p {
-      color: rgba(255,255,255,0.85);
-      font-size: var(--text-lg);
-      max-width: 680px;
-      margin-inline: auto;
-      line-height: 1.7;
-    }
-
-    /* Values grid */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-5);
-      margin-top: var(--space-10);
-    }
-
-    .value-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .value-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(37,99,235,0.2);
-    }
-
-    .value-icon {
-      font-size: 2.5rem;
-      margin-bottom: var(--space-4);
-      display: block;
-    }
-
-    .value-title {
-      font-family: var(--font-heading);
-      font-size: var(--text-base);
-      font-weight: 700;
       margin-bottom: var(--space-2);
     }
 
-    .value-text {
+    .stat-card .stat-label {
       font-size: var(--text-sm);
       color: var(--txt-muted);
-      line-height: 1.6;
+      font-weight: 600;
     }
 
-    /* Team */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-    }
-
-    .team-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .team-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .team-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--gradient-brand);
-      display: flex;
+    /* Why Choose Us Icons */
+    .bento-icon {
+      font-size: 2.25rem;
+      margin-bottom: var(--space-4);
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      margin: 0 auto var(--space-4);
-      box-shadow: 0 8px 24px rgba(37,99,235,0.25);
-    }
-
-    .team-name {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: var(--text-base);
-      margin-bottom: var(--space-1);
-    }
-
-    .team-role {
-      font-size: var(--text-sm);
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      background: var(--clr-primary-light);
       color: var(--clr-primary);
-      font-weight: 600;
-      margin-bottom: var(--space-2);
     }
 
-    .team-bio {
-      font-size: var(--text-xs);
-      color: var(--txt-muted);
-      line-height: 1.6;
+    .card-accent-brand .bento-icon {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
     }
 
-    /* Timeline */
-    .timeline {
+    /* Timeline Inside Bento */
+    .timeline-bento {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
       position: relative;
-      padding-left: var(--space-10);
+      padding-left: var(--space-8);
+      margin-top: var(--space-4);
     }
 
-    .timeline::before {
+    .timeline-bento::before {
       content: '';
       position: absolute;
-      left: 16px;
-      top: 0;
-      bottom: 0;
+      left: 12px;
+      top: 8px;
+      bottom: 8px;
       width: 2px;
       background: var(--gradient-brand);
+      opacity: 0.3;
     }
 
-    .timeline-item {
+    .timeline-node {
       position: relative;
-      margin-bottom: var(--space-8);
     }
 
-    .timeline-dot {
+    .timeline-marker {
       position: absolute;
-      left: calc(-1 * var(--space-10) + 8px);
+      left: -28px;
       top: 4px;
-      width: 18px;
-      height: 18px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: var(--gradient-brand);
-      border: 3px solid var(--bg-body);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+      background: var(--clr-primary);
+      border: 3px solid var(--bg-surface);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
     }
 
     .timeline-year {
       font-size: var(--text-xs);
       font-weight: 700;
       color: var(--clr-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-1);
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
     }
 
-    .timeline-title {
-      font-size: var(--text-base);
-      font-weight: 700;
-      margin-bottom: var(--space-1);
-    }
-
-    .timeline-desc {
+    .timeline-heading {
       font-size: var(--text-sm);
-      color: var(--txt-muted);
-      line-height: 1.6;
+      font-weight: 700;
+      color: var(--txt-primary);
+      margin-bottom: 4px;
     }
 
-    /* Hero illustration area */
+    .timeline-body {
+      font-size: var(--text-xs);
+      color: var(--txt-muted);
+      line-height: 1.5;
+    }
+
+    /* Tool Category Bento grid */
+    .cat-bento-card {
+      padding: var(--space-6);
+      border-radius: var(--radius-xl);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .cat-bento-card .cat-icon {
+      font-size: 1.75rem;
+      transition: transform var(--transition-base);
+    }
+
+    .cat-bento-card:hover .cat-icon {
+      transform: scale(1.2);
+    }
+
+    .cat-bento-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--txt-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .cat-bento-desc {
+      font-size: var(--text-xs);
+      color: var(--txt-muted);
+      line-height: 1.5;
+      margin-bottom: var(--space-2);
+    }
+
+    .cat-bento-link {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--clr-primary);
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Floating illustration card */
     .hero-illustration {
       background: var(--gradient-brand);
       border-radius: var(--radius-2xl);
@@ -310,6 +332,7 @@
       box-shadow: var(--shadow-xl);
       position: relative;
       overflow: hidden;
+      color: white;
     }
 
     .hero-illustration::after {
@@ -321,6 +344,68 @@
       height: 200px;
       background: rgba(255,255,255,0.08);
       border-radius: 50%;
+    }
+
+    /* Team styles */
+    .team-avatar {
+      font-size: 2.25rem;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--clr-primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+    }
+
+    .team-role {
+      font-size: var(--text-xs);
+      color: var(--clr-primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    /* Newsletter Card custom overrides */
+    .newsletter-bento {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+      border: 1.5px solid var(--border-color);
+    }
+
+    .newsletter-bento-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-8);
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .newsletter-bento-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-6);
+      }
+    }
+
+    .newsletter-bento-copy h2 {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: var(--txt-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .newsletter-bento-copy p {
+      font-size: var(--text-sm);
+      color: var(--txt-muted);
+    }
+
+    /* Ad Slots spacing */
+    .about-ad-wrap {
+      margin-block: var(--space-8);
     }
   </style>
 
@@ -424,126 +509,256 @@
         </div>
       </div>
 
-      <!-- Stats -->
-      <div class="stats-band reveal reveal-delay-2">
-        <div class="stat-item">
-          <span class="stat-num" data-count="5" data-suffix="M+">5M+</span>
-          <div class="stat-label">Monthly Users</div>
+      <!-- Stats Bento Grid -->
+      <div class="bento-grid stats-bento reveal reveal-delay-2">
+        <div class="bento-card stat-card col-span-3">
+          <span class="stat-num">5M+</span>
+          <span class="stat-label">Monthly Users</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-num" data-count="100" data-suffix="+">100+</span>
-          <div class="stat-label">Free Tools</div>
+        <div class="bento-card stat-card col-span-3">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">Free Tools</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-num" data-count="99" data-suffix="%">99%</span>
-          <div class="stat-label">Accuracy Rate</div>
+        <div class="bento-card stat-card col-span-3">
+          <span class="stat-num">99%</span>
+          <span class="stat-label">Accuracy Rate</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-num" data-count="2020">2020</span>
-          <div class="stat-label">Founded</div>
+        <div class="bento-card stat-card col-span-3">
+          <span class="stat-num">2020</span>
+          <span class="stat-label">Founded</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- AD SLOT -->
-  <div class="container">
+  <div class="container about-ad-wrap">
     <div class="ad-slot ad-slot-leaderboard" aria-label="Advertisement"><span>Advertisement</span></div>
   </div>
 
-  <!-- MISSION -->
-  <section class="section">
+  <!-- OUR STORY & MISSION BENTO -->
+  <section class="about-section">
     <div class="container">
-      <div class="mission-card reveal">
-        <h2>Our Mission</h2>
-        <p>To empower every Indian with free, accurate, and instant financial calculators — helping millions make informed decisions about their loans, investments, taxes, and daily lives. Because financial clarity shouldn't cost money.</p>
+      <div class="bento-grid">
+        <!-- Story text -->
+        <div class="bento-card col-span-8 reveal">
+          <div>
+            <div class="about-eyebrow">📖 Our Story</div>
+            <h2 class="bento-card-title" style="font-size:var(--text-2xl); margin-block:var(--space-2) var(--space-4)">From a Weekend Project to India's Most Trusted Calculator Site</h2>
+            <p class="bento-card-text" style="margin-bottom:var(--space-4)">
+              Needful Calculator started in 2020 when our founder — frustrated with cluttered, slow, and inaccurate online calculators — decided to build something better. What began as a simple EMI calculator grew into a platform trusted by millions of Indians every month.
+            </p>
+            <p class="bento-card-text">
+              Today, our team of financial analysts, developers, and designers work together to ensure every tool is accurate, fast, and beautiful. We update our calculators with every RBI rate change, every budget announcement, and every tax reform.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story timeline -->
+        <div class="bento-card col-span-4 reveal reveal-delay-2">
+          <div>
+            <div class="bento-card-title">Milestones</div>
+            <div class="timeline-bento">
+              <div class="timeline-node">
+                <div class="timeline-marker"></div>
+                <div class="timeline-year">2020</div>
+                <div class="timeline-heading">Founded & Launched EMI Tool</div>
+                <p class="timeline-body">Started with a single, clean EMI calculator. Reached 10,000 users in the first month.</p>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-marker"></div>
+                <div class="timeline-year">2021</div>
+                <div class="timeline-heading">25+ Finance Tools</div>
+                <p class="timeline-body">Added SIP, FD, PPF calculators and reached 500,000 monthly users.</p>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-marker"></div>
+                <div class="timeline-year">2022</div>
+                <div class="timeline-heading">Launched Health & Unit Converters</div>
+                <p class="timeline-body">Expanded beyond finance. Crossed 1 million monthly users.</p>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-marker"></div>
+                <div class="timeline-year">2023</div>
+                <div class="timeline-heading">Financial Literacy Blog</div>
+                <p class="timeline-body">Launched educational articles to help users make smarter money choices.</p>
+              </div>
+              <div class="timeline-node">
+                <div class="timeline-marker"></div>
+                <div class="timeline-year">2025</div>
+                <div class="timeline-heading">100+ Tools, 5M+ Users</div>
+                <p class="timeline-body">Became India's most trusted free calculator platform.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission statement -->
+        <div class="bento-card card-accent-brand col-span-12 reveal">
+          <div class="bento-icon">🎯</div>
+          <div>
+            <h2 class="bento-card-title" style="font-size:var(--text-xl)">Our Core Mission</h2>
+            <p class="bento-card-text" style="font-size:var(--text-base); line-height:1.7; max-width:900px">
+              To empower every Indian with free, accurate, and instant financial calculators — helping millions make informed decisions about their loans, investments, taxes, and daily lives. Because financial clarity shouldn't cost money.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- VALUES -->
-  <section class="section" style="background:var(--bg-muted)">
+  <!-- CORE VALUES -->
+  <section class="about-section" style="background:var(--bg-muted)">
     <div class="container">
       <div class="text-center mb-8 reveal">
-        <div class="section-eyebrow">💎 Our Values</div>
+        <div class="about-eyebrow">💎 Our Values</div>
         <h2 class="section-title">What We Stand For</h2>
       </div>
-      <div class="values-grid stagger-children">
-        <div class="value-card">
-          <span class="value-icon">⚡</span>
-          <div class="value-title">Speed First</div>
-          <p class="value-text">Every calculator responds instantly. No waiting, no loading spinners. Your time is valuable.</p>
+      <div class="bento-grid">
+        <div class="bento-card col-span-3 reveal">
+          <div>
+            <div class="bento-icon">⚡</div>
+            <h3 class="bento-card-title">Speed First</h3>
+            <p class="bento-card-text">Every calculator responds instantly. No waiting, no loading spinners. Your time is valuable.</p>
+          </div>
         </div>
-        <div class="value-card">
-          <span class="value-icon">✅</span>
-          <div class="value-title">Verified Accuracy</div>
-          <p class="value-text">All formulas are verified against RBI, SEBI, and IT department guidelines. We take accuracy seriously.</p>
+        <div class="bento-card col-span-3 reveal reveal-delay-1">
+          <div>
+            <div class="bento-icon">✅</div>
+            <h3 class="bento-card-title">Verified Accuracy</h3>
+            <p class="bento-card-text">All formulas are verified against RBI, SEBI, and IT department guidelines. We take accuracy seriously.</p>
+          </div>
         </div>
-        <div class="value-card">
-          <span class="value-icon">🔒</span>
-          <div class="value-title">Privacy by Design</div>
-          <p class="value-text">Your financial data never leaves your device. All calculations happen in your browser. Zero data collection.</p>
+        <div class="bento-card col-span-3 reveal reveal-delay-2">
+          <div>
+            <div class="bento-icon">🔒</div>
+            <h3 class="bento-card-title">Privacy by Design</h3>
+            <p class="bento-card-text">Your financial data never leaves your device. All calculations happen in your browser. Zero data collection.</p>
+          </div>
         </div>
-        <div class="value-card">
-          <span class="value-icon">♾️</span>
-          <div class="value-title">Always Free</div>
-          <p class="value-text">Every tool is free, forever. No subscriptions, no premium tiers. Financial tools should be accessible to all.</p>
+        <div class="bento-card col-span-3 reveal reveal-delay-3">
+          <div>
+            <div class="bento-icon">♾️</div>
+            <h3 class="bento-card-title">Always Free</h3>
+            <p class="bento-card-text">Every tool is free, forever. No subscriptions, no premium tiers. Financial tools should be accessible to all.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AD SLOT MID -->
-  <div class="container">
-    <div class="ad-slot" aria-label="Advertisement"><span>Advertisement</span></div>
-  </div>
-
-  <!-- STORY / TIMELINE -->
-  <section class="section">
+  <!-- TOOL CATEGORIES -->
+  <section class="about-section">
     <div class="container">
-      <div class="grid-2" style="gap:var(--space-12);align-items:start">
-        <div class="reveal">
-          <div class="section-eyebrow">📖 Our Story</div>
-          <h2 class="section-title" style="text-align:left">From a Weekend Project to India's Most Trusted Calculator Site</h2>
-          <p style="color:var(--txt-muted);line-height:1.8;margin-top:var(--space-4)">
-            Needful Calculator started in 2020 when our founder — frustrated with cluttered, slow, and inaccurate online calculators — decided to build something better. What began as a simple EMI calculator grew into a platform trusted by millions of Indians every month.
-          </p>
-          <p style="color:var(--txt-muted);line-height:1.8;margin-top:var(--space-4)">
-            Today, our team of financial analysts, developers, and designers work together to ensure every tool is accurate, fast, and beautiful. We update our calculators with every RBI rate change, every budget announcement, and every tax reform.
-          </p>
+      <div class="text-center mb-8 reveal">
+        <div class="about-eyebrow">🧮 Tool Categories</div>
+        <h2 class="section-title">Our Toolkit</h2>
+        <p class="section-subtitle">A diverse collection of utilities engineered for precision and accessibility.</p>
+      </div>
+      <div class="bento-grid">
+        <a href="category.html#finance" class="bento-card cat-bento-card col-span-3 reveal">
+          <span class="cat-icon">🏦</span>
+          <div>
+            <h3 class="cat-bento-title">Finance Tools</h3>
+            <p class="cat-bento-desc">Calculate home, car, and personal loan EMIs with full projections and schedules.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#health" class="bento-card cat-bento-card col-span-3 reveal reveal-delay-1">
+          <span class="cat-icon">💚</span>
+          <div>
+            <h3 class="cat-bento-title">Health Tools</h3>
+            <p class="cat-bento-desc">Track BMI, optimal calories, and essential health metrics instantly.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#education" class="bento-card cat-bento-card col-span-3 reveal reveal-delay-2">
+          <span class="cat-icon">📚</span>
+          <div>
+            <h3 class="cat-bento-title">Education Tools</h3>
+            <p class="cat-bento-desc">Calculate GPA, grades, and age progressions accurately.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#unit" class="bento-card cat-bento-card col-span-3 reveal reveal-delay-3">
+          <span class="cat-icon">🔁</span>
+          <div>
+            <h3 class="cat-bento-title">Unit Converters</h3>
+            <p class="cat-bento-desc">Convert length, weight, area, volume, and currency smoothly.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#date" class="bento-card cat-bento-card col-span-3 reveal">
+          <span class="cat-icon">📅</span>
+          <div>
+            <h3 class="cat-bento-title">Date & Time</h3>
+            <p class="cat-bento-desc">Calculate age differences, workdays, and date offsets quickly.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#pdf" class="bento-card cat-bento-card col-span-3 reveal reveal-delay-1">
+          <span class="cat-icon">📄</span>
+          <div>
+            <h3 class="cat-bento-title">PDF Tools</h3>
+            <p class="cat-bento-desc">Merge, split, compress, and sign PDF documents directly in browser.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#insurance" class="bento-card cat-bento-card col-span-3 reveal reveal-delay-2">
+          <span class="cat-icon">🛡️</span>
+          <div>
+            <h3 class="cat-bento-title">Insurance</h3>
+            <p class="cat-bento-desc">Calculate term premiums and SIP insurance benefits.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+        <a href="category.html#tax" class="bento-card cat-bento-card col-span-3 reveal reveal-delay-3">
+          <span class="cat-icon">💰</span>
+          <div>
+            <h3 class="cat-bento-title">Tax Tools</h3>
+            <p class="cat-bento-desc">Compute GST, Income Tax (Old vs New), and VAT breakdowns.</p>
+          </div>
+          <span class="cat-bento-link">Explore Tools →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US & FUTURE VISION -->
+  <section class="about-section" style="background:var(--bg-muted)">
+    <div class="container">
+      <div class="text-center mb-8 reveal">
+        <div class="about-eyebrow">⭐ Key Advantages</div>
+        <h2 class="section-title">Why Users Choose Us</h2>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card col-span-6 reveal">
+          <div>
+            <div class="bento-icon">🏛️</div>
+            <h3 class="bento-card-title">Regulatory Compliance</h3>
+            <p class="bento-card-text">
+              Our calculators are strictly updated to align with the latest guidelines from standard institutions like the Reserve Bank of India (RBI) for loan terms, the Securities and Exchange Board of India (SEBI) for compounding estimates, and the Income Tax Department for tax slabs.
+            </p>
+          </div>
         </div>
-        <div class="reveal reveal-delay-2">
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2020</div>
-              <div class="timeline-title">Founded & Launched EMI Calculator</div>
-              <p class="timeline-desc">Started with a single, clean EMI calculator. Reached 10,000 users in the first month.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2021</div>
-              <div class="timeline-title">Expanded to 25 Finance Tools</div>
-              <p class="timeline-desc">Added SIP, FD, PPF calculators and reached 500,000 monthly users.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2022</div>
-              <div class="timeline-title">Launched Health & Unit Converters</div>
-              <p class="timeline-desc">Expanded beyond finance. Crossed 1 million monthly users.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2023</div>
-              <div class="timeline-title">Blog & Educational Content</div>
-              <p class="timeline-desc">Launched our financial literacy blog. 3 million monthly users.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2025</div>
-              <div class="timeline-title">100+ Tools, 5M+ Users</div>
-              <p class="timeline-desc">India's most trusted free calculator platform. Growing every day.</p>
-            </div>
+
+        <div class="bento-card col-span-6 reveal reveal-delay-1">
+          <div>
+            <div class="bento-icon">🔒</div>
+            <h3 class="bento-card-title">100% Privacy Preservation</h3>
+            <p class="bento-card-text">
+              We do not track or save your input variables. Calculations are run locally using client-side JavaScript execution in your web browser. Your financial numbers are strictly your own business.
+            </p>
+          </div>
+        </div>
+
+        <div class="bento-card card-accent-brand col-span-12 reveal">
+          <div class="bento-icon">🚀</div>
+          <div>
+            <h3 class="bento-card-title">Our Future Vision</h3>
+            <p class="bento-card-text">
+              As we look ahead to 2026 and beyond, we are committed to making financial utilities accessible to all. We are expanding to support regional Indian languages (Hindi, Tamil, Telugu, etc.), integrating simple AI calculation guides, and scaling our browser-based PDF and document editing utilities.
+            </p>
           </div>
         </div>
       </div>
@@ -551,55 +766,63 @@
   </section>
 
   <!-- TEAM -->
-  <section class="section" style="background:var(--bg-muted)">
+  <section class="about-section">
     <div class="container">
       <div class="text-center mb-8 reveal">
-        <div class="section-eyebrow">👥 Our Team</div>
+        <div class="about-eyebrow">👥 Our Team</div>
         <h2 class="section-title">The People Behind Needful Calculator</h2>
         <p class="section-subtitle">A passionate team of finance experts, developers and designers committed to your financial clarity.</p>
       </div>
-      <div class="team-grid stagger-children">
-        <div class="team-card">
-          <div class="team-avatar">👨‍💼</div>
-          <div class="team-name">Arjun Sharma</div>
-          <div class="team-role">Founder & CEO</div>
-          <p class="team-bio">Chartered Accountant with 12 years in financial advisory. Built Needful Calculator to democratize financial tools in India.</p>
+      <div class="bento-grid">
+        <div class="bento-card col-span-3 reveal">
+          <div>
+            <div class="team-avatar">👨‍💼</div>
+            <div class="team-role">Founder & CEO</div>
+            <h3 class="bento-card-title">Arjun Sharma</h3>
+            <p class="bento-card-text">Chartered Accountant with 12 years in financial advisory. Built Needful Calculator to democratize financial tools in India.</p>
+          </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">👩‍💻</div>
-          <div class="team-name">Priya Patel</div>
-          <div class="team-role">Head of Technology</div>
-          <p class="team-bio">Full-stack engineer passionate about building fast, accessible web experiences for millions of users.</p>
+        <div class="bento-card col-span-3 reveal reveal-delay-1">
+          <div>
+            <div class="team-avatar">👩‍💻</div>
+            <div class="team-role">Head of Technology</div>
+            <h3 class="bento-card-title">Priya Patel</h3>
+            <p class="bento-card-text">Full-stack engineer passionate about building fast, accessible web experiences for millions of users.</p>
+          </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">👨‍🎨</div>
-          <div class="team-name">Rahul Verma</div>
-          <div class="team-role">Lead Designer</div>
-          <p class="team-bio">UI/UX designer with a focus on making complex financial data simple and beautiful to interact with.</p>
+        <div class="bento-card col-span-3 reveal reveal-delay-2">
+          <div>
+            <div class="team-avatar">👨‍🎨</div>
+            <div class="team-role">Lead Designer</div>
+            <h3 class="bento-card-title">Rahul Verma</h3>
+            <p class="bento-card-text">UI/UX designer with a focus on making complex financial data simple and beautiful to interact with.</p>
+          </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">👩‍💼</div>
-          <div class="team-name">Sneha Gupta</div>
-          <div class="team-role">Financial Analyst</div>
-          <p class="team-bio">CFA charterholder ensuring every formula and result is verified against the latest regulatory guidelines.</p>
+        <div class="bento-card col-span-3 reveal reveal-delay-3">
+          <div>
+            <div class="team-avatar">👩‍💼</div>
+            <div class="team-role">Financial Analyst</div>
+            <h3 class="bento-card-title">Sneha Gupta</h3>
+            <p class="bento-card-text">CFA charterholder ensuring every formula and result is verified against the latest regulatory guidelines.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
-  <section class="section-sm">
+  <!-- CALL TO ACTION & NEWSLETTER -->
+  <section class="about-section" style="padding-top:0">
     <div class="container">
-      <div class="newsletter-section reveal">
-        <div class="newsletter-inner">
-          <div class="newsletter-copy">
+      <div class="bento-card newsletter-bento col-span-12 reveal">
+        <div class="newsletter-bento-inner">
+          <div class="newsletter-bento-copy">
             <h2>Join Our Community</h2>
             <p>Weekly financial tips, calculator updates, and money-saving insights.</p>
           </div>
-          <form class="newsletter-form" id="newsletter-form" novalidate>
+          <form class="newsletter-form" id="newsletter-form" novalidate style="display:flex;gap:var(--space-2);flex-wrap:wrap;flex-grow:1;max-width:500px">
             <label for="newsletter-email" class="sr-only">Email address</label>
-            <input type="email" id="newsletter-email" placeholder="Enter your email" required autocomplete="email">
-            <button type="submit">Subscribe Free</button>
+            <input type="email" id="newsletter-email" placeholder="Enter your email" required autocomplete="email" style="flex-grow:1;height:46px;border:1px solid var(--border-color);border-radius:var(--radius-md);padding-inline:var(--space-4);background:var(--bg-surface);color:var(--txt-primary)">
+            <button type="submit" class="btn btn-primary" style="height:46px;padding-inline:var(--space-6);white-space:nowrap">Subscribe Free</button>
           </form>
         </div>
       </div>
