@@ -6,12 +6,24 @@
 
 /* ═══════════════════════════════════════════════
    BREAKPOINTS REFERENCE
-   xs  : < 480px   (small phones)
-   sm  : < 640px   (phones)
+   xs  : < 320px   (tiny phones)
+   sm  : < 480px   (small phones)
    md  : < 768px   (tablets portrait)
    lg  : < 1024px  (tablets landscape / small laptops)
    xl  : < 1280px  (laptops)
 ═══════════════════════════════════════════════ */
+
+/* ─── Base: Prevent ALL horizontal overflow ─── */
+html {
+  overflow-x: hidden;
+}
+body {
+  overflow-x: visible;
+}
+
+* {
+  min-width: 0; /* Prevents flex/grid children from overflowing */
+}
 
 /* ─── Large (≤ 1280px) ─── */
 @media (max-width: 1280px) {
@@ -51,23 +63,6 @@
   /* Related tools */
   .related-tools-grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Category page sidebar */
-  .cat-page-layout { grid-template-columns: 1fr; }
-
-  .cat-sidebar {
-    position: relative;
-    top: auto;
-  }
-
-  .cat-sidebar-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    padding: var(--space-3);
-  }
-
-  .cat-sidebar-item { flex: 0 0 auto; }
-
   /* Blog page */
   .blog-page-layout { grid-template-columns: 1fr; }
   .featured-post { grid-template-columns: 1fr; }
@@ -75,6 +70,11 @@
 
   /* Hero adjustments */
   .hero-stats { gap: var(--space-6); }
+
+  /* Calculator widget — remove fixed sidebar width */
+  .calc-page-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ─── Tablet Portrait (≤ 768px) ─── */
@@ -82,166 +82,567 @@
   /* Root spacing */
   :root {
     --header-height: 60px;
+    --container-pad: 1rem;
   }
 
-  /* Section spacing */
+  /* ── HEADER FIX ── */
+  .site-header {
+    height: var(--header-height);
+    overflow: visible; /* Allow dropdown, but clip content */
+  }
+
+  .header-inner {
+    gap: var(--space-3);
+    padding-inline: var(--space-3);
+    flex-wrap: nowrap;
+  }
+
+  /* Logo scaling */
+  .logo {
+    gap: var(--space-2);
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  .logo img {
+    height: 28px;
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+  }
+
+  /* Header — hide desktop nav + search, show hamburger */
+  .header-search { display: none; }
+  .header-nav    { display: none; }
+  .hamburger     { display: flex; flex-shrink: 0; }
+
+  /* Push theme toggle to right of logo, before hamburger */
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  /* ── MOBILE NAV ── */
+  .mobile-nav {
+    top: var(--header-height);
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .mobile-nav-links a {
+    padding: var(--space-3) var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  /* ── SECTION SPACING ── */
   .section        { padding-block: var(--space-10); }
-  .section-sm     { padding-block: var(--space-8); }
+  .section-sm     { padding-block: var(--space-6); }
   .section-lg     { padding-block: var(--space-12); }
 
-  /* Grid overrides */
+  /* ── GRID OVERRIDES ── */
   .grid-2 { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-6 { grid-template-columns: repeat(2, 1fr); }
 
-  /* Header — hide desktop nav + search, show hamburger */
-  .header-search { display: none; }
-  .header-nav    { display: none; }
-  .hamburger     { display: flex; }
-
-  /* Hero */
-  .hero { padding-block: var(--space-10) var(--space-8); }
-
-  .hero-title {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  /* ── HERO ── */
+  .hero {
+    padding-block: var(--space-8) var(--space-6);
+    overflow: hidden;
   }
 
-  .hero-subtitle { font-size: var(--text-base); }
+  .hero::before,
+  .hero::after {
+    display: none; /* Remove oversized decorative elements */
+  }
 
-  .hero-search input { height: 52px; font-size: var(--text-sm); }
+  .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.25rem);
+    line-height: 1.2;
+  }
 
-  .hero-cta { flex-direction: column; align-items: center; }
+  .hero-subtitle {
+    font-size: var(--text-sm);
+    max-width: 100%;
+    padding-inline: var(--space-2);
+  }
+
+  .hero-search {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-search input {
+    height: 50px;
+    font-size: var(--text-sm);
+    padding-left: var(--space-12);
+    padding-right: calc(var(--space-4) + 80px);
+  }
+
+  .hero-search-btn {
+    height: 38px;
+    padding: 0 var(--space-4);
+    font-size: var(--text-xs);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .hero-cta .btn-lg {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
 
   .hero-stats {
     flex-wrap: wrap;
-    gap: var(--space-5);
+    gap: var(--space-4);
     justify-content: center;
   }
 
   .hero-stat-num { font-size: var(--text-xl); }
+  .hero-stat-label { font-size: var(--text-xs); }
 
-  /* Newsletter */
+  .hero-eyebrow {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-size: clamp(1.35rem, 5vw, 1.875rem);
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    font-size: var(--text-sm);
+    padding-inline: var(--space-2);
+  }
+
+  /* ── TOOL CARDS ── */
+  .tool-card {
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .tool-card-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .tool-card-name {
+    font-size: var(--text-sm);
+  }
+
+  .tool-card-desc {
+    font-size: var(--text-xs);
+  }
+
+  /* ── CATEGORY CARDS ── */
+  .category-card {
+    padding: var(--space-4) var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .category-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+  }
+
+  .category-name { font-size: var(--text-sm); }
+  .category-count { font-size: var(--text-xs); }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    padding-block: var(--space-2);
+    margin-bottom: var(--space-2);
+    gap: var(--space-1-5, 6px);
+    font-size: var(--text-xs);
+  }
+
+  /* ── CALCULATOR WIDGET ── */
+  .calc-header {
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-3);
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .calc-header-icon {
+    font-size: 1.75rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .calc-header h1 {
+    font-size: var(--text-xl);
+    line-height: 1.25;
+  }
+
+  .calc-header p {
+    font-size: var(--text-xs);
+  }
+
+  .calc-body {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-3);
+  }
+
+  .form-label {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-1);
+  }
+
+  .form-input {
+    height: 44px;
+    font-size: var(--text-sm);
+    padding: 0 var(--space-3);
+  }
+
+  .range-slider {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-1);
+  }
+
+  /* ── CALC RESULTS ── */
+  .calc-results {
+    padding: var(--space-3) var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  .calc-result-row {
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    padding: var(--space-2) 0;
+  }
+
+  .calc-result-label { font-size: var(--text-xs); }
+
+  .calc-result-value {
+    font-size: var(--text-base);
+    font-weight: 700;
+  }
+
+  /* Main EMI result on mobile */
+  #emi-result {
+    font-size: var(--text-2xl) !important;
+  }
+
+  /* ── CHART ── */
+  .chart-wrap {
+    max-width: 200px;
+    margin-inline: auto;
+  }
+
+  .chart-wrap canvas {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .chart-legend {
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: var(--text-xs);
+  }
+
+  /* ── AMORTIZATION TABLE ── */
+  .amortization-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .amortization-table {
+    min-width: 480px;
+    font-size: var(--text-xs);
+  }
+
+  .amortization-table th,
+  .amortization-table td {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { gap: var(--space-4); }
+
+  /* ── NEWSLETTER ── */
   .newsletter-section {
     margin-inline: 0;
     border-radius: var(--radius-xl);
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-6) var(--space-4);
   }
 
   .newsletter-inner {
     flex-direction: column;
     text-align: center;
-    gap: var(--space-6);
+    gap: var(--space-5);
   }
 
-  .newsletter-form { max-width: 100%; }
+  .newsletter-copy h2 { font-size: var(--text-xl); }
+  .newsletter-copy p  { font-size: var(--text-sm); }
 
-  /* Footer */
+  .newsletter-form {
+    flex-direction: column;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+    height: 46px;
+  }
+
+  /* ── FOOTER ── */
   .footer-top {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: var(--space-3);
   }
 
-  /* Section titles */
-  .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
-  .section-subtitle { font-size: var(--text-base); }
-
-  /* Trending */
+  /* ── TRENDING ── */
   .trending-grid { grid-template-columns: 1fr; }
 
-  /* Tool card grid on calculators page */
-  .tools-header { flex-direction: column; align-items: flex-start; }
+  /* ── TOOL HEADER ── */
+  .tools-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
 
-  /* Blog page */
-  .blog-filters { flex-wrap: wrap; }
+  /* ── BLOG ── */
+  .blog-filters { flex-wrap: wrap; gap: var(--space-2); }
+  .blog-card-title { font-size: var(--text-base); }
 
-  /* FAQ */
-  .faq-question { font-size: var(--text-sm); }
+  /* ── FAQ ── */
+  .faq-question {
+    font-size: var(--text-sm);
+    padding: var(--space-4) var(--space-4);
+  }
 
-  /* Calc widget */
-  .calc-header { padding: var(--space-5); }
-  .calc-body   { padding: var(--space-5); }
-
-  /* Sidebar widgets stack properly */
-  .sidebar { gap: var(--space-4); }
-
-  /* Ad slots — maintain fixed min-height for CLS safety */
+  /* ── AD SLOTS ── */
   .ad-slot-leaderboard {
     min-height: var(--ad-banner-h);
     max-width: 100%;
   }
 
-  /* Category cards */
-  .category-section-header { flex-wrap: wrap; gap: var(--space-2); }
+  /* ── CATEGORY PAGE ── */
+  .category-section-header {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
 
-  /* About / static pages */
+  /* ── ABOUT / STATIC ── */
   .about-hero-grid   { grid-template-columns: 1fr; text-align: center; }
   .contact-grid      { grid-template-columns: 1fr; }
   .team-grid         { grid-template-columns: repeat(2, 1fr); }
   .values-grid       { grid-template-columns: repeat(2, 1fr); }
   .stats-band        { grid-template-columns: repeat(2, 1fr); }
-}
 
-/* ─── Small Phones (≤ 640px) ─── */
-@media (max-width: 640px) {
-  .grid-4 { grid-template-columns: 1fr; }
-
-  .logo-text { display: none; } /* show only icon on very small screens */
-
-  .hero-search input { padding-left: var(--space-10); }
-
-  .newsletter-form {
-    flex-direction: column;
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    font-size: var(--text-base);
+    padding: var(--space-4);
+    overflow-x: auto;
+    white-space: normal;
   }
 
-  .newsletter-form input,
-  .newsletter-form button { width: 100%; }
+  /* ── BUTTONS ── */
+  .btn-lg {
+    padding: 0.875rem 1.5rem;
+    font-size: var(--text-sm);
+  }
 }
 
-/* ─── Extra Small (≤ 480px) ─── */
+/* ─── Small Phones (≤ 480px) ─── */
 @media (max-width: 480px) {
-  :root { --container-pad: 1rem; }
+  :root {
+    --container-pad: 0.875rem;
+    --header-height: 56px;
+  }
 
+  /* ── HEADER ── */
+  .header-inner {
+    gap: var(--space-2);
+    padding-inline: var(--space-2);
+  }
+
+  .logo img {
+    height: 26px;
+    width: 26px;
+  }
+
+  .logo-text {
+    font-size: 0.8rem;
+    max-width: 110px;
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .hamburger {
+    width: 32px;
+    height: 32px;
+    padding: var(--space-1);
+  }
+
+  /* ── GRID ── */
+  .grid-4 { grid-template-columns: 1fr; }
   .grid-6 { grid-template-columns: 1fr; }
 
+  /* ── HERO ── */
+  .hero-title { font-size: clamp(1.4rem, 6.5vw, 1.875rem); }
   .hero-cta .btn-lg { width: 100%; justify-content: center; }
 
+  .hero-search input {
+    height: 46px;
+    font-size: var(--text-xs);
+    padding-left: var(--space-10);
+  }
+
+  .hero-search-btn {
+    height: 34px;
+    padding: 0 var(--space-3);
+    font-size: 0.7rem;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title { font-size: 1.35rem; }
+
+  /* ── TOOL CARDS ── */
+  .tool-card {
+    padding: var(--space-3);
+  }
+
+  .tool-card-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  /* ── CALC WIDGET ── */
+  .calc-header {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .calc-header h1 { font-size: var(--text-lg); }
+
+  .calc-body {
+    padding: var(--space-3);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-3);
+  }
+
+  .calc-results {
+    padding: var(--space-3);
+    margin-top: var(--space-3);
+  }
+
+  #emi-result { font-size: var(--text-2xl) !important; }
+
+  /* ── BUTTONS ── */
   .btn-lg {
     padding: 0.875rem 1.25rem;
     font-size: var(--text-sm);
   }
 
-  .section-title { font-size: 1.5rem; }
-
-  /* Calc results larger on phone */
-  #emi-result { font-size: var(--text-2xl) !important; }
-
-  /* Tags wrap */
+  /* ── TAGS / FILTERS ── */
   .blog-filters { gap: var(--space-1); }
 
-  /* Related tools */
+  /* ── RELATED TOOLS ── */
   .related-tools-grid { grid-template-columns: 1fr; }
 
-  /* About / Contact pages */
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    font-size: var(--text-xs);
+    gap: var(--space-1);
+    padding-block: var(--space-1) var(--space-2);
+    margin-bottom: var(--space-1);
+  }
+
+  /* ── PAGINATION ── */
+  .pagination { gap: var(--space-1); }
+  .page-btn { width: 36px; height: 36px; font-size: var(--text-xs); }
+
+  /* ── ABOUT / CONTACT ── */
   .team-grid   { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
   .stats-band  { grid-template-columns: 1fr; }
 
-  /* Footer social */
+  /* ── FOOTER ── */
   .footer-social { justify-content: center; }
-  .footer-legal  { flex-direction: column; align-items: center; gap: var(--space-2); }
+  .footer-legal  {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
 
-  /* Breadcrumb wraps cleanly */
-  .breadcrumb { font-size: var(--text-xs); }
+  /* ── CHART ── */
+  .chart-wrap canvas {
+    width: 160px !important;
+    height: 160px !important;
+  }
+}
 
-  /* Pagination on mobile */
-  .pagination { gap: var(--space-1); }
-  .page-btn { width: 36px; height: 36px; font-size: var(--text-xs); }
+/* ─── Tiny Phones (≤ 320px) ─── */
+@media (max-width: 320px) {
+  :root {
+    --container-pad: 0.75rem;
+    --header-height: 52px;
+  }
+
+  /* ── HEADER ── */
+  .logo-text { display: none; } /* Show icon only on very tiny screens */
+
+  .logo img {
+    height: 24px;
+    width: 24px;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .hero-title { font-size: 1.35rem; }
+  .section-title { font-size: 1.25rem; }
+  .calc-header h1 { font-size: var(--text-base); }
+
+  /* ── TOOL CARD ── */
+  .tool-card { padding: var(--space-3); }
+  .tool-card-icon { width: 34px; height: 34px; font-size: 0.9rem; }
+
+  /* ── CHART ── */
+  .chart-wrap { max-width: 150px; }
+  .chart-wrap canvas {
+    width: 140px !important;
+    height: 140px !important;
+  }
 }
 
 /* ─── Print styles ─── */

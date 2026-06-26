@@ -177,6 +177,41 @@ const CalculatorRouter = {
     // Update document title
     document.title = `${config.title} — Needful Calculator`;
 
+    // 1b. Dynamic Breadcrumb Update
+    const CATEGORY_LABELS = {
+      'finance':    'Finance Calculators',
+      'tax':        'Tax Calculators',
+      'health':     'Health Calculators',
+      'education':  'Education Calculators',
+      'date':       'Date Calculators',
+      'converters': 'Unit Converters',
+      'pdf':        'PDF Tools',
+      'insurance':  'Insurance Calculators'
+    };
+    const CATEGORY_HASHES = {
+      'finance':    '#finance',
+      'tax':        '#tax',
+      'health':     '#health',
+      'education':  '#education',
+      'date':       '#date',
+      'converters': '#unit',
+      'pdf':        '#pdf',
+      'insurance':  '#insurance'
+    };
+    const activeCategory   = SlugToCategoryMap[this.activeTool] || 'finance';
+    const categoryLabel    = CATEGORY_LABELS[activeCategory] || 'Calculators';
+    const categoryHash     = CATEGORY_HASHES[activeCategory] || '';
+
+    const breadcrumbCatLink = document.getElementById('breadcrumb-category-link');
+    const breadcrumbToolName = document.getElementById('breadcrumb-tool-name');
+    if (breadcrumbCatLink) {
+      breadcrumbCatLink.textContent = categoryLabel;
+      breadcrumbCatLink.href = `category.html${categoryHash}`;
+    }
+    if (breadcrumbToolName) {
+      breadcrumbToolName.textContent = config.title;
+    }
+
     // 2. Generate Forms inside .calc-body
     const bodyEl = document.querySelector('.calc-body');
     if (!bodyEl) return;

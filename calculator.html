@@ -217,6 +217,13 @@
 </header>
 
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <!-- Mobile Search -->
+  <div class="mobile-nav-search" style="position:relative;margin-bottom:var(--space-4);">
+    <svg style="position:absolute;left:var(--space-3);top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--txt-muted);pointer-events:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" id="mobile-search-input" placeholder="Search calculators..." aria-label="Search calculators"
+      style="width:100%;height:44px;border:1.5px solid var(--border-color);border-radius:var(--radius-full);padding:0 var(--space-4) 0 var(--space-10);font-size:var(--text-sm);background:var(--bg-muted);color:var(--txt-primary);outline:none;font-family:var(--font-body);">
+    <div class="search-results" id="mobile-search-results" role="listbox" aria-label="Search suggestions"></div>
+  </div>
   <div class="mobile-nav-links">
     <a href="index.html">🏠 Home</a>
     <a href="category.html">🧮 All Calculators</a>
@@ -229,13 +236,13 @@
 <main id="main-content">
   <div class="container section-sm">
 
-    <!-- Breadcrumb -->
+    <!-- Breadcrumb (updated dynamically by calculator.js) -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
       <span class="breadcrumb-sep" aria-hidden="true">/</span>
-      <a href="category.html">Finance Calculators</a>
+      <a id="breadcrumb-category-link" href="category.html#finance">Finance Calculators</a>
       <span class="breadcrumb-sep" aria-hidden="true">/</span>
-      <span class="breadcrumb-current" aria-current="page">EMI Calculator</span>
+      <span id="breadcrumb-tool-name" class="breadcrumb-current" aria-current="page">EMI Calculator</span>
     </nav>
 
     <div class="calc-page-layout">

@@ -262,6 +262,12 @@ var SearchModule = (() => {
         document.querySelector('.sidebar-search .search-results')
       );
 
+      /* Mobile nav search */
+      createSearchInstance(
+        document.getElementById('mobile-search-input'),
+        document.getElementById('mobile-search-results')
+      );
+
       /* Tools page search bar */
       const toolsBar = document.getElementById('tools-search');
       if (toolsBar) {

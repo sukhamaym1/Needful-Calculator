@@ -726,6 +726,76 @@ const ScrollSpy = (() => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
+    // ── Footer Overlap Guard ──
+    // Dynamically reduce sidebar max-height when footer enters viewport
+    const sidebar = document.querySelector('.cat-sidebar');
+    const footer  = document.querySelector('.site-footer');
+    if (sidebar && footer && window.innerWidth >= 992) {
+      const footerGuard = () => {
+        const footerRect  = footer.getBoundingClientRect();
+        const headerH     = document.querySelector('.site-header')?.offsetHeight || 70;
+        const sidebarTop  = headerH + 20;
+        const viewH       = window.innerHeight;
+
+        if (footerRect.top < viewH) {
+          // Footer is entering viewport — shrink sidebar to stop before it
+          const remaining = footerRect.top - sidebarTop - 20;
+          sidebar.style.maxHeight = Math.max(100, remaining) + 'px';
+        } else {
+          // Footer below viewport — full available height
+          sidebar.style.maxHeight = `calc(100vh - ${sidebarTop + 20}px)`;
+        }
+      };
+
+      window.addEventListener('scroll', footerGuard, { passive: true });
+      window.addEventListener('resize', footerGuard, { passive: true });
+      footerGuard(); // Run once on init
+    }
+
+    // ── Mobile: Scroll active chip into view ──
+    // Ensures the highlighted chip is always visible in the horizontal scroll
+    const scrollChipIntoView = (id) => {
+      if (window.innerWidth >= 992) return;
+      const chip = document.querySelector(`.cat-sidebar-item[href="#${id}"]`);
+      if (chip) {
+        chip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    };
+
+    // Patch highlight to also scroll chip on mobile
+    const originalHighlight = highlight;
+    const patchedHighlight = (id) => {
+      originalHighlight(id);
+      scrollChipIntoView(id);
+    };
+    // Replace scroll handler with patched version
+    window.removeEventListener('scroll', handleScroll);
+    const patchedHandleScroll = () => {
+      updateScrollProgress();
+      if (isScrolling) return;
+      const sections = getVisibleSections();
+      if (sections.length === 0) { patchedHighlight('all'); return; }
+      const scrollPos = window.scrollY || window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const totalHeight = document.documentElement.scrollHeight;
+      const header = document.querySelector('.site-header');
+      const hH = header ? header.offsetHeight : 70;
+      const threshold = hH + 150;
+      let activeId = 'all';
+      if (scrollPos + viewportHeight >= totalHeight - 50) {
+        activeId = sections[sections.length - 1].id;
+      } else if (scrollPos < 150) {
+        activeId = 'all';
+      } else {
+        for (let i = 0; i < sections.length; i++) {
+          const sec = sections[i];
+          if (scrollPos >= sec.offsetTop - threshold) { activeId = sec.id; }
+        }
+      }
+      patchedHighlight(activeId);
+    };
+    window.addEventListener('scroll', patchedHandleScroll, { passive: true });
+
     const initialHash = window.location.hash;
     if (initialHash) {
       const targetId = initialHash.substring(1);
@@ -752,6 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
   BackToTop.init();
   LinkAutoFixer.init();
   RecentlyViewed.init();
+  ScrollSpy.init();
 });
 
 /* Global exports */
