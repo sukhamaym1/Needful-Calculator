@@ -10,7 +10,7 @@ All-in-One Online Calculator Platform
 
 🌐 Live Website
 
-🔗 https://needfulcalculator.com
+🔗 https://sukhamaym1.github.io/Needful-Calculator/index.html
 
 ---
 
